@@ -1,0 +1,38 @@
+.accordion {
+    @apply w-full bg-theme_neutral-800 rounded text-theme_neutral-0;
+
+    &[class*="open"] {
+        .accordion {
+            &__header {
+                &::after {
+                    @apply rotate-[270deg];
+                }
+            }
+
+            &__content {
+                @apply block;
+            }
+        }
+    }
+
+    &__header,
+    &__content {
+        @apply p-4;
+    }
+
+    &__header {
+        @apply w-full text-left flex items-center;
+
+        &:focus {
+            @apply rounded outline outline-1 outline-theme_brand-border shadow-[0_0_5px] shadow-theme_brand-border;
+        }
+
+        &::after {
+            @apply content-["\276F"] block text-theme_brand ml-auto rotate-90 ease-out duration-300;
+        }
+    }
+
+    &__content {
+        @apply hidden;
+    }
+}
