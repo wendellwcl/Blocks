@@ -21,14 +21,14 @@
     }
 
     &__header {
-        @apply w-full text-left flex items-center;
+        @apply w-full flex items-center text-left rounded;
 
         &:focus {
-            @apply rounded outline outline-1 outline-theme_brand-border shadow-[0_0_5px] shadow-theme_brand-border;
+            @apply outline outline-1 outline-theme_brand-border shadow-[0_0_5px] shadow-theme_brand-border;
         }
 
         &::after {
-            @apply content-["\276F"] block text-theme_brand ml-auto rotate-90 ease-out duration-300;
+            @apply content-["\276F"] block text-theme_brand ml-auto rotate-90 transition ease-out duration-300;
         }
     }
 
