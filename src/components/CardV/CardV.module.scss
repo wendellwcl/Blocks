@@ -1,0 +1,15 @@
+.cardV {
+    @apply w-full max-w-80 bg-theme_neutral-800 text-theme_neutral-0 shadow-[0_0_10px] shadow-theme_neutral-800 rounded overflow-hidden cursor-pointer;
+
+    &__img {
+        @apply w-full aspect-video object-cover bg-theme_neutral-700 flex items-center justify-center;
+    }
+
+    &__body {
+        @apply p-4 flex flex-col gap-1;
+    }
+
+    &__title {
+        @apply text-xl font-bold;
+    }
+}
