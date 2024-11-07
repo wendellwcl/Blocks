@@ -1,5 +1,5 @@
 .accordion {
-    @apply w-full bg-theme_neutral-800 rounded text-theme_neutral-0;
+    @apply w-full bg-theme_neutral-800 rounded;
 
     &[class*="open"] {
         .accordion {

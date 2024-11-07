@@ -1,5 +1,5 @@
 .button {
-    @apply p-2 rounded bg-theme_brand text-theme_neutral-0 transition ease-out cursor-pointer;
+    @apply p-2 rounded bg-theme_brand transition ease-out cursor-pointer;
 
     &:hover {
         @apply bg-theme_brand-hover;
