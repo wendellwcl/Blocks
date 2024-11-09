@@ -5,7 +5,7 @@
         .accordion {
             &__header {
                 &::after {
-                    @apply rotate-[270deg];
+                    @apply rotate-[225deg] translate-y-[2px];
                 }
             }
 
@@ -28,7 +28,7 @@
         }
 
         &::after {
-            @apply content-["\276F"] block text-theme_brand ml-auto rotate-90 transition ease-out duration-300;
+            @apply content-[''] w-[12px] h-[12px] ml-auto border-[3px] border-t-0 border-l-0 border-theme_brand rotate-45 -translate-y-[2px] transition ease-out duration-300;
         }
     }
 
