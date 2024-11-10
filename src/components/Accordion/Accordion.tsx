@@ -3,6 +3,11 @@
 import styles from "./Accordion.module.scss";
 
 export default function Accordion() {
+    /**
+     * Toggles the open or closed state of the accordion element.
+     * @param e - click event capture
+     * @returns void
+     */
     function toggleAccordion(e: React.MouseEvent<HTMLButtonElement, MouseEvent>): void {
         const targetEl: HTMLButtonElement = e.target as HTMLButtonElement;
         const parentEl = targetEl.parentElement;

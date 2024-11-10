@@ -1,0 +1,55 @@
+.carousel {
+    @apply w-full max-w-5xl aspect-video relative overflow-hidden;
+
+    &__btn {
+        @apply absolute top-1/2 -translate-y-1/2 w-20 h-20 z-50 cursor-pointer;
+
+        &::after {
+            @apply content-[''] absolute top-1/2 left-1/2 w-[20px] h-[20px] -translate-y-1/2 -translate-x-1/2 border-[5px] border-t-0 border-l-0 border-theme_neutral-0 opacity-50 transition ease-out;
+
+            &:hover {
+                @apply opacity-100;
+            }
+        }
+
+        &--prev {
+            @apply left-0;
+
+            &::after {
+                @apply rotate-[135deg];
+            }
+        }
+
+        &--next {
+            @apply right-0;
+
+            &::after {
+                @apply rotate-[-45deg];
+            }
+        }
+    }
+
+    &__content {
+        @apply absolute inset-0 w-full h-full flex;
+
+        & > * {
+            @apply absolute inset-0 block w-full h-full flex-[0_0_auto] translate-x-0 object-cover z-10 transition ease-in-out duration-300;
+
+            &:first-child {
+                @apply z-20;
+            }
+
+            &[class*="current"] {
+                @apply translate-x-0 z-20;
+
+                & ~ * {
+                    @apply translate-x-full;
+                }
+            }
+
+            &:has(+ [class*="current"]) {
+                @apply -translate-x-full;
+            }
+        }
+    }
+}
