@@ -1,13 +1,23 @@
-import Carousel from "@/components/Carousel/Carousel";
+"use client";
+
+import Dialog, { toggleDialog } from "@/components/Dialog/Dialog";
 
 export default function Home() {
     return (
         <div className="bg-theme_neutral text-theme_neutral-0 min-h-screen w-screen flex items-center justify-center p-8">
-            <Carousel>
-                <img src="https://fakeimg.pl/900x900/7834e5/EEEEF0?text=Image1&font=bebas" />
-                <img src="https://fakeimg.pl/900x900/7834e5/EEEEF0?text=Image2&font=bebas" />
-                <img src="https://fakeimg.pl/900x900/7834e5/EEEEF0?text=Image3&font=bebas" />
-            </Carousel>
+            <Dialog dialogId="my-dialog" title="Title" actionFunction={() => console.log("HELLO WORLD")}>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat facilis laboriosam eveniet
+                    voluptatum quas modi iusto officiis quis. Qui ex eaque modi. Architecto recusandae aperiam rerum
+                    nostrum, impedit fugiat quo!
+                </p>
+            </Dialog>
+            <button
+                onClick={() => toggleDialog("my-dialog")}
+                className="bg-theme_neutral-0 text-theme_brand p-2 rounded"
+            >
+                open dialog
+            </button>
         </div>
     );
 }

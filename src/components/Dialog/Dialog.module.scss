@@ -1,0 +1,65 @@
+@import "../../styles/mixins.scss";
+
+.dialog {
+    @apply fixed inset-0 w-full h-full p-8 items-center justify-center bg-theme_neutral bg-opacity-70 hidden;
+
+    &[class*="open"] {
+        @apply flex;
+    }
+
+    &__body {
+        @apply w-full max-w-3xl max-h-full rounded bg-theme_neutral-800 flex flex-col;
+
+        & > * {
+            @apply p-4;
+        }
+
+        & > *:not(:last-child) {
+            @apply border-b border-theme_neutral-500;
+        }
+    }
+
+    &__header {
+        @apply flex gap-4;
+    }
+
+    &__title {
+        @apply text-xl self-center;
+    }
+
+    &__close {
+        @apply w-10 h-10 ml-auto text-2xl transition;
+
+        &:hover {
+            @apply text-theme_brand;
+        }
+    }
+
+    &__content {
+        @apply overflow-y-auto;
+    }
+
+    &__footer {
+        @apply flex justify-end gap-4;
+    }
+
+    &__button {
+        @include btn-default;
+
+        &--neutral {
+            @apply bg-theme_neutral-400;
+
+            &:hover {
+                @apply bg-theme_neutral-500;
+            }
+
+            &:disabled {
+                @apply opacity-50 cursor-not-allowed;
+
+                &:hover {
+                    @apply bg-theme_neutral-400;
+                }
+            }
+        }
+    }
+}

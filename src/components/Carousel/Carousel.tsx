@@ -9,7 +9,7 @@ export default function Carousel({ children }: { children: React.ReactNode }) {
 
     /**
      * Returns the items of the carousel element.
-     * @returns an array of elements.
+     * @returns itemsArray - an array of elements.
      */
     function getCarouselItems(): Element[] {
         const itemsCollection: HTMLCollection = contentRef.current!.children;
@@ -19,7 +19,6 @@ export default function Carousel({ children }: { children: React.ReactNode }) {
 
     /**
      * Configures the initial state of the carousel by applying the necessary classes and setting up the elements for functionality.
-     * @returns void
      */
     function setCarousel(): void {
         const carouselItems = getCarouselItems();
@@ -33,7 +32,6 @@ export default function Carousel({ children }: { children: React.ReactNode }) {
     /**
      * Performs a specific action in the carousel, such as moving forward or backward between elements.
      * @param action - The action to be performed, which can be "next" for the next element or "prev" for the previous element.
-     * @returns void
      */
     function handleAction(action: "prev" | "next"): void {
         const carouselItems = getCarouselItems();

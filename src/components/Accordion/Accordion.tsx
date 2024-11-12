@@ -2,11 +2,15 @@
 
 import styles from "./Accordion.module.scss";
 
-export default function Accordion() {
+interface AccordionProps {
+    title: string;
+    contentText: string;
+}
+
+export default function Accordion({ title, contentText }: AccordionProps) {
     /**
      * Toggles the open or closed state of the accordion element.
      * @param e - click event capture
-     * @returns void
      */
     function toggleAccordion(e: React.MouseEvent<HTMLButtonElement, MouseEvent>): void {
         const targetEl: HTMLButtonElement = e.target as HTMLButtonElement;
@@ -18,14 +22,9 @@ export default function Accordion() {
     return (
         <div className={styles.accordion}>
             <button className={styles.accordion__header} onClick={(e) => toggleAccordion(e)}>
-                Accordion Header
+                {title}
             </button>
-            <div className={styles.accordion__content}>
-                Lorem ipsum dolor sit amet. Et quod enim et incidunt corrupti At doloribus maiores sed soluta nobis aut
-                architecto dolorum quo repellendus iusto. Sed exercitationem molestias qui quisquam excepturi sit
-                reprehenderit impedit aut quibusdam reiciendis et rerum laboriosam quo eaque earum qui nostrum dolorem.
-                Aut deserunt voluptas aut harum consequatur ut necessitatibus molestiae qui omnis quae.
-            </div>
+            <div className={styles.accordion__content}>{contentText}</div>
         </div>
     );
 }
