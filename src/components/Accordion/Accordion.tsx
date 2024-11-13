@@ -1,5 +1,6 @@
 "use client";
 
+import { MouseEvent } from "react";
 import styles from "./Accordion.module.scss";
 
 interface AccordionProps {
@@ -12,7 +13,7 @@ export default function Accordion({ title, contentText }: AccordionProps) {
      * Toggles the open or closed state of the accordion element.
      * @param e - click event capture
      */
-    function toggleAccordion(e: React.MouseEvent<HTMLButtonElement, MouseEvent>): void {
+    function toggleAccordion(e: MouseEvent): void {
         const targetEl: HTMLButtonElement = e.target as HTMLButtonElement;
         const parentEl = targetEl.parentElement;
         parentEl ? parentEl?.classList.toggle("open") : null;
