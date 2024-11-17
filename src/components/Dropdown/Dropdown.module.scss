@@ -27,7 +27,7 @@
     }
 
     &__list {
-        @apply absolute -bottom-1 left-0 translate-y-full w-full min-w-32 max-h-64 bg-theme_neutral-800 border border-theme_neutral-700 rounded overflow-auto hidden;
+        @apply absolute -bottom-1 left-0 translate-y-full w-full min-w-32 max-h-64 bg-theme_neutral-800 border border-theme_neutral-600 rounded overflow-auto hidden;
     }
 
     &__item {

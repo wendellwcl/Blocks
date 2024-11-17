@@ -39,6 +39,6 @@
     }
 
     &__checkmark {
-        @apply absolute top-0 left-0 w-6 h-6 bg-theme_neutral-900 border border-theme_neutral-700 rounded transition ease-out;
+        @apply absolute top-0 left-0 w-6 h-6 bg-theme_neutral-800 border border-theme_neutral-600 rounded transition ease-out;
     }
 }

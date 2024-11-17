@@ -6,7 +6,7 @@
     }
 
     &:focus {
-        @apply @include focus-default;
+        @include focus-default;
     }
 
     &:disabled {

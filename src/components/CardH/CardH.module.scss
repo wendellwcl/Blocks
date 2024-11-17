@@ -1,5 +1,5 @@
 .cardH {
-    @apply w-full max-w-[440px] min-h-40 bg-theme_neutral-800 grid grid-rows-1 grid-cols-3 shadow-[0_0_10px] shadow-theme_neutral-800 rounded overflow-hidden cursor-pointer;
+    @apply w-full max-w-[440px] min-h-40 bg-theme_neutral-800  border border-theme_neutral-600 grid grid-rows-1 grid-cols-3 shadow-[0_0_10px] shadow-theme_neutral-800 rounded overflow-hidden cursor-pointer;
 
     &__img {
         @apply w-full h-full object-cover;

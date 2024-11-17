@@ -8,7 +8,7 @@
     }
 
     &__body {
-        @apply w-full max-w-3xl max-h-full rounded bg-theme_neutral-800 flex flex-col;
+        @apply w-full max-w-3xl max-h-full rounded bg-theme_neutral-800 border border-theme_neutral-600 flex flex-col;
 
         & > * {
             @apply p-4;

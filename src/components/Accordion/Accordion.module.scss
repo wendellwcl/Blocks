@@ -1,7 +1,7 @@
 @import "../../styles/mixins.scss";
 
 .accordion {
-    @apply w-full bg-theme_neutral-800 rounded;
+    @apply w-full bg-theme_neutral-800 border border-theme_neutral-600 rounded;
 
     &[class*="open"] {
         .accordion {

@@ -1,0 +1,46 @@
+@import "../../styles/mixins.scss";
+
+.hoverCard {
+    @include btn-default;
+    @apply relative;
+
+    &::after {
+        @apply content-[''] absolute inset-0 w-full h-full scale-y-[125%];
+    }
+
+    &[class*="show"] {
+        .hoverCard {
+            &__floating {
+                @apply absolute -bottom-1 left-1/2 translate-y-full -translate-x-1/2 visible;
+            }
+        }
+    }
+
+    &[class*="left"] {
+        .hoverCard {
+            &__floating {
+                @apply left-0 translate-x-0;
+            }
+        }
+    }
+
+    &[class*="right"] {
+        .hoverCard {
+            &__floating {
+                @apply left-full -translate-x-full;
+            }
+        }
+    }
+
+    &[class*="top"] {
+        .hoverCard {
+            &__floating {
+                @apply bottom-full -translate-y-[4px];
+            }
+        }
+    }
+
+    &__floating {
+        @apply w-screen max-w-72 max-h-72 fixed bg-theme_neutral-800 border border-theme_neutral-600 p-2 rounded overflow-y-auto invisible;
+    }
+}
