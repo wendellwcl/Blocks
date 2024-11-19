@@ -1,0 +1,55 @@
+@import "../../styles/mixins.scss";
+
+.pagination {
+    @apply flex items-center gap-4;
+
+    &__arrow {
+        @include btn-default;
+        @apply relative flex items-center gap-1;
+
+        span {
+            @apply hidden;
+        }
+
+        &--prev,
+        &--next {
+            &::after {
+                @apply content-[''] block w-[12px] h-[12px] border-[3px] border-t-0 border-l-0;
+            }
+        }
+
+        &--prev {
+            @apply flex-row-reverse;
+
+            &::after {
+                @apply rotate-[135deg] translate-x-[2px];
+            }
+        }
+
+        &--next {
+            &::after {
+                @apply -rotate-45 -translate-x-[2px];
+            }
+        }
+    }
+
+    &__list {
+        @apply flex items-center gap-2;
+    }
+
+    &__item {
+        @apply text-lg font-bold flex;
+
+        &:hover {
+            @apply text-theme_brand-hover;
+        }
+
+        &[class*="current"] {
+            @apply text-2xl text-theme_brand border-b-2 border-theme_brand;
+
+            &:hover {
+                @apply text-theme_brand-hover;
+            }
+        }
+    }
+}
