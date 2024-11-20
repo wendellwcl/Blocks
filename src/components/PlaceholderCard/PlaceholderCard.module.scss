@@ -1,0 +1,36 @@
+@import "../../styles/mixins.scss";
+
+.placeholder-card {
+    @apply w-full max-w-80 bg-theme_neutral-800 border border-theme_neutral-600 rounded overflow-hidden cursor-wait;
+
+    &__img {
+        @apply w-full aspect-video bg-theme_neutral-400;
+        @include animation-placeholder-bg;
+    }
+
+    &__body {
+        @apply p-4 flex flex-col gap-4;
+    }
+
+    &__title {
+        @apply w-full max-w-32 h-4 bg-theme_neutral-400;
+        @include animation-placeholder-bg;
+    }
+
+    &__text {
+        @apply flex flex-col gap-2;
+
+        &__line {
+            @apply block w-full h-4 bg-theme_neutral-400 relative;
+            @include animation-placeholder-bg;
+
+            &:nth-child(2) {
+                @apply w-2/3;
+            }
+
+            &:nth-child(3) {
+                @apply w-4/5 hidden sm:block;
+            }
+        }
+    }
+}

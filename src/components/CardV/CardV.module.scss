@@ -1,5 +1,5 @@
 .cardV {
-    @apply w-full max-w-80 bg-theme_neutral-800 border border-theme_neutral-600 shadow-[0_0_10px] shadow-theme_neutral-800 rounded overflow-hidden cursor-pointer;
+    @apply w-full max-w-80 bg-theme_neutral-800 border border-theme_neutral-600 rounded overflow-hidden cursor-pointer;
 
     &__img {
         @apply w-full aspect-video object-cover bg-theme_neutral-700 flex items-center justify-center;
