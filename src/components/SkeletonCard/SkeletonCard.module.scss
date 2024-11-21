@@ -1,11 +1,11 @@
 @import "../../styles/mixins.scss";
 
-.placeholder-card {
+.skeleton-card {
     @apply w-full max-w-80 bg-theme_neutral-800 border border-theme_neutral-600 rounded overflow-hidden cursor-wait;
 
     &__img {
         @apply w-full aspect-video bg-theme_neutral-400;
-        @include animation-placeholder-bg;
+        @include animation-skeleton;
     }
 
     &__body {
@@ -14,7 +14,7 @@
 
     &__title {
         @apply w-full max-w-32 h-4 bg-theme_neutral-400;
-        @include animation-placeholder-bg;
+        @include animation-skeleton;
     }
 
     &__text {
@@ -22,7 +22,7 @@
 
         &__line {
             @apply block w-full h-4 bg-theme_neutral-400 relative;
-            @include animation-placeholder-bg;
+            @include animation-skeleton;
 
             &:nth-child(2) {
                 @apply w-2/3;
