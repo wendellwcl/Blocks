@@ -1,0 +1,44 @@
+@import "../../styles/mixins.scss";
+
+.radio {
+    @apply block relative pl-7 cursor-pointer;
+
+    &:hover {
+        .radio__checkmark {
+            @apply bg-theme_neutral-600;
+        }
+    }
+
+    &:has(> .radio__input:focus) {
+        .radio__checkmark {
+            @include focus-default;
+            @apply border-theme_brand;
+        }
+    }
+
+    &:has(> .radio__input:checked) {
+        .radio__checkmark {
+            @apply bg-theme_brand;
+
+            &:after {
+                @apply block;
+            }
+        }
+    }
+
+    &:has(> .radio__input:disabled) {
+        @apply opacity-50 cursor-not-allowed;
+    }
+
+    &__checkmark {
+        @apply absolute top-0 left-0 w-6 h-6 bg-theme_neutral-800 border border-theme_neutral-600 rounded-full;
+
+        &:after {
+            @apply content-[''] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-2 h-2 rounded-full bg-theme_neutral-0 hidden;
+        }
+    }
+
+    &__input {
+        @apply absolute h-0 w-0 opacity-0 cursor-pointer;
+    }
+}
