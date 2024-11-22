@@ -1,0 +1,14 @@
+.progress-circle {
+    &__container {
+        @apply -rotate-90;
+    }
+
+    &__circle {
+        @apply fill-none stroke-theme_neutral-800;
+
+        &--progress {
+            @apply stroke-theme_brand;
+            stroke-linecap: round;
+        }
+    }
+}
