@@ -1,0 +1,9 @@
+.progress-bar {
+    &__container {
+        @apply w-full h-6 bg-theme_neutral-800 rounded-xl overflow-hidden;
+    }
+
+    &__bar {
+        @apply fill-theme_brand;
+    }
+}
