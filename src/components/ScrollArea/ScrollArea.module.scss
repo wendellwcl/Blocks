@@ -1,0 +1,38 @@
+.scrollArea {
+    &__container {
+        @apply w-full h-full overflow-hidden relative;
+
+        &[class*="overflow"] {
+            @apply pr-6;
+
+            .scrollArea {
+                &__scrollBar,
+                &__scrollThumb {
+                    @apply block;
+                }
+            }
+        }
+    }
+
+    &__content {
+        @apply w-full h-full p-2 overflow-y-scroll;
+        scrollbar-width: none; /* Remove default slash in Firefox */
+        -ms-overflow-style: none; /* Remove slash in IE/Edge */
+
+        &::-webkit-scrollbar {
+            display: none; /* Remove slash in Chrome/Safari */
+        }
+    }
+
+    &__scrollBar {
+        @apply absolute top-0 right-0 w-6 h-full bg-transparent hidden;
+    }
+
+    &__scrollThumb {
+        @apply absolute top-0 left-1/2 -translate-x-1/2 w-3 bg-theme_brand rounded-[4px] hidden cursor-pointer;
+
+        &:hover {
+            @apply bg-theme_brand-hover;
+        }
+    }
+}
