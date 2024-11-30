@@ -1,0 +1,37 @@
+.scrollSpy {
+    &__container {
+        @apply w-full h-full flex flex-col md:flex-row;
+    }
+
+    &__nav {
+        @apply w-full md:w-[30%] md:max-w-48 h-auto md:h-full border-b md:border-b-0 md:border-r border-theme_brand;
+    }
+
+    &__list {
+        @apply w-full h-full flex flex-row md:flex-col gap-2 p-2 overflow-y-auto;
+    }
+
+    &__item {
+        @apply w-full max-w-20 md:max-w-none;
+    }
+
+    &__link {
+        @apply block w-full h-full p-2 md:px-4 text-center md:text-left font-bold rounded truncate;
+
+        &[class*="active"] {
+            @apply bg-theme_brand;
+
+            &:hover {
+                @apply bg-theme_brand-hover;
+            }
+        }
+
+        &:hover {
+            @apply bg-theme_neutral-600;
+        }
+    }
+
+    &__content {
+        @apply w-full h-full p-4 overflow-y-auto scroll-smooth;
+    }
+}
