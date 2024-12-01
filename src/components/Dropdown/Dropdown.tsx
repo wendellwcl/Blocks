@@ -11,17 +11,21 @@ interface DropdownProps {
 
 export default function Dropdown({ title, children }: DropdownProps) {
     /**
-     * Toggles the open or closed state of the dropdown element.
+     * Toggles the open or closed state of a dropdown element by adding or removing the "open" class.
      * @param e - click event capture
      */
     function toggleDropdown(e: MouseEvent): void {
-        let currentEl = e.currentTarget;
+        let currentEl = e.currentTarget; // Initialize with the element that triggered the event
+
+        // Traverse the DOM tree until it finds an element with the "data-dropdown" attribute, corresponding to the parent element of the element that triggered the event
         while (!currentEl.parentElement?.hasAttribute("data-dropdown")) {
             currentEl = currentEl.parentElement!;
         }
 
+        // Once the parent element with the "data-dropdown" attribute is found, toggle its "open" class
         const targetDropdownEl = currentEl.parentElement!;
-        targetDropdownEl.classList.toggle("open");
+        targetDropdownEl.classList.toggle("open"); // Add the "open" class if not present, or remove it if it is
+
         return;
     }
 

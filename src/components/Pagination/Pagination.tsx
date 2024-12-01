@@ -5,7 +5,9 @@ import { useState } from "react";
 import styles from "./Pagination.module.scss";
 
 export default function Pagination() {
-    //!!!The variables and functions are for working example purposes only. This component must be adapted according to the paging logic!!!
+    /**
+     * @warning - !!!The variables and functions are for working example purposes only. This component must be adapted according to the paging logic!!!
+     */
     const [counter, setCounter] = useState(2);
     const maxCounter = 5;
 

@@ -10,13 +10,18 @@ interface DialogProps {
 }
 
 /**
- * Toggles the open or closed state of the dialog component.
- * !!! To control a dialog component, import and use this function anywhere in your code !!!
- * @param dialogId - the ID of the target dialog component
+ * Toggles the open or closed state of a dialog component by adding or removing the "open" class.
+ * @important - This function is reusable and can be called from anywhere in your code to control dialog components.
+ *
+ * @param dialogId - the ID of the target dialog component. It can include or omit the "#" prefix.
  */
 export function toggleDialog(dialogId: string): void {
+    // Ensure the provided ID starts with a "#" prefix for valid CSS selector usage
     const targetId = dialogId.startsWith("#") ? dialogId : `#${dialogId}`;
+
+    // Find the dialog element in the DOM and toggle the "open" class
     document.querySelector(targetId)?.classList.toggle("open");
+
     return;
 }
 

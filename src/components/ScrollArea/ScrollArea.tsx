@@ -9,13 +9,13 @@ interface ScrollAreaProps {
 }
 
 export default function ScrollArea({ children }: ScrollAreaProps) {
-    //References to DOM elements
+    // References to DOM elements
     const containerRef = useRef<HTMLDivElement>(null);
     const contentRef = useRef<HTMLDivElement>(null);
     const scrollBarRef = useRef<HTMLDivElement>(null);
     const scrollThumbRef = useRef<HTMLDivElement>(null);
 
-    //Drag control
+    // Drag control
     const isDrag = useRef<boolean>(false);
     const startY = useRef<number>(0);
     const startScrollTop = useRef<number>(0);

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { InputHTMLAttributes } from "react";
+import { InputHTMLAttributes, FocusEvent as ReactFocusEvent } from "react";
 
 import styles from "./Input.module.scss";
 
@@ -13,14 +13,15 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
 
 export default function Input({ label, placeholder, type, id, ...props }: InputProps) {
     /**
-     * Checks whether the input element is filled and manages the '.filled' class to indicate this state.
+     * Checks whether the input element is filled and manages the 'filled' class to indicate this state.
      * @param e - input blur event
      */
-    function handleFilled(e: React.FocusEvent<HTMLInputElement>): void {
+    function handleFilled(e: ReactFocusEvent<HTMLInputElement>): void {
+        // If the input field has a value
         if (e.currentTarget.value) {
-            e.currentTarget.classList.add("filled");
+            e.currentTarget.classList.add("filled"); // Add 'filled' class
         } else {
-            e.currentTarget.classList.remove("filled");
+            e.currentTarget.classList.remove("filled"); // Else remove 'filled' class
         }
         return;
     }
