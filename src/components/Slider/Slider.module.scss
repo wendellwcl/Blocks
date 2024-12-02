@@ -1,0 +1,30 @@
+.slider {
+    &__container {
+        @apply w-full h-1 rounded bg-theme_neutral-600 relative;
+    }
+
+    &__fill-bar,
+    &__input {
+        @apply absolute left-0 top-1/2 -translate-y-1/2;
+    }
+
+    &__fill-bar {
+        @apply block h-full rounded bg-theme_brand;
+    }
+
+    &__input {
+        @apply appearance-none w-full h-full bg-transparent outline-none;
+
+        &::-webkit-slider-thumb,
+        &::-moz-range-thumb {
+            @apply appearance-none w-4 h-4 rounded-full bg-theme_brand border-none transition cursor-pointer;
+        }
+
+        &:hover {
+            &::-webkit-slider-thumb,
+            &::-moz-range-thumb {
+                @apply bg-theme_brand-hover;
+            }
+        }
+    }
+}
