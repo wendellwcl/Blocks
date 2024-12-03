@@ -1,0 +1,8 @@
+.spinner {
+    @apply animate-spin;
+
+    &__circle {
+        @apply fill-none stroke-theme_brand;
+        stroke-linecap: round;
+    }
+}
