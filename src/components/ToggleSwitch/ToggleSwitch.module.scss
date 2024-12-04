@@ -1,0 +1,17 @@
+.toggle-switch {
+    @apply inline-block w-14 h-8 rounded-full bg-theme_neutral-800 border border-theme_neutral-600 relative cursor-pointer;
+
+    &:has(.toggle-switch__checkbox:checked) {
+        .toggle-switch__slider {
+            @apply left-[calc(100%-2px)] -translate-x-full bg-theme_brand;
+        }
+    }
+
+    &__checkbox {
+        @apply w-0 h-0 opacity-0;
+    }
+
+    &__slider {
+        @apply block h-[calc(100%-4px)] absolute left-[2px] top-1/2 -translate-y-1/2 aspect-square rounded-full bg-theme_neutral-200 transition-all;
+    }
+}
