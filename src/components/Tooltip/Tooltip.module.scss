@@ -1,0 +1,51 @@
+.tooltip {
+    @apply relative cursor-pointer;
+
+    &[class*="show"] {
+        .tooltip__tipContainer {
+            @apply absolute -top-10 left-1/2 -translate-x-1/2 visible;
+        }
+    }
+
+    &[class*="left"] {
+        .tooltip__tipContainer {
+            @apply left-0 translate-x-0;
+
+            &:after {
+                @apply left-4;
+            }
+        }
+    }
+
+    &[class*="right"] {
+        .tooltip__tipContainer {
+            @apply left-full -translate-x-full;
+
+            &:after {
+                @apply left-[calc(100%-16px)] -translate-x-full;
+            }
+        }
+    }
+
+    &[class*="top"] {
+        .tooltip__tipContainer {
+            @apply top-10;
+
+            &:after {
+                @apply bottom-full;
+            }
+        }
+    }
+
+    &__tipContainer {
+        @apply fixed max-w-52 py-1 px-2 rounded bg-theme_brand invisible;
+
+        &:after {
+            @apply content-[''] w-3 h-3 absolute bottom-0 left-1/2 translate-y-1/2 -translate-x-1/2 rotate-45 bg-inherit -z-10;
+        }
+    }
+
+    &__tip {
+        @apply w-full truncate;
+    }
+}

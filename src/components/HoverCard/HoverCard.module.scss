@@ -32,7 +32,7 @@
         }
     }
 
-    &[class*="top"] {
+    &[class*="bottom"] {
         .hoverCard {
             &__floating {
                 @apply bottom-full -translate-y-[4px];

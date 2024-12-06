@@ -1,13 +1,13 @@
 "use client";
 
-import styles from "./HoverCard.module.scss";
+import styles from "./Tooltip.module.scss";
 
-interface HoverCardProps {
-    text: string;
+interface TooltipProps {
     children: React.ReactNode;
+    tip_text: string;
 }
 
-export default function HoverCard({ text, children }: HoverCardProps) {
+export default function Tooltip({ children, tip_text }: TooltipProps) {
     /**
      * Handles the display of the floating element by checking the trigger element's position
      * and applying the appropriate classes for proper alignment and visibility.
@@ -40,9 +40,9 @@ export default function HoverCard({ text, children }: HoverCardProps) {
         }
 
         // Check the position of the floating element relative to the Y-axis
-        if (yAxis + triggerElPosition.height / 2 + (floatingElHeight! + 4) > screenHeight) {
+        if (yAxis + triggerElPosition.height / 2 - (floatingElHeight! + 40) < 0) {
             // If the floating element would go off-screen at the bottom, add the "top" class
-            e.currentTarget.classList.add("bottom");
+            e.currentTarget.classList.add("top");
         }
 
         // Add the "show" class to make the floating element visible
@@ -61,20 +61,20 @@ export default function HoverCard({ text, children }: HoverCardProps) {
         // Remove all positioning classes
         e.currentTarget.classList.remove("left");
         e.currentTarget.classList.remove("right");
-        e.currentTarget.classList.remove("bottom");
+        e.currentTarget.classList.remove("top");
 
         return;
     }
 
     return (
         <div
-            className={styles.hoverCard}
+            className={styles.tooltip}
             onMouseEnter={(e) => showFloatingEl(e)}
             onMouseLeave={(e) => hiddenFloatingEl(e)}
         >
-            {text}
-            <div className={styles.hoverCard__floating} data-floating>
-                {children}
+            <div className={styles.tooltip__content}>{children}</div>
+            <div className={styles.tooltip__tipContainer} data-floating>
+                <p className={styles.tooltip__tip}>{tip_text}</p>
             </div>
         </div>
     );
