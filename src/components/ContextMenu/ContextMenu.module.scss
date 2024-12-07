@@ -1,0 +1,21 @@
+.contextMenu {
+    &__triggerArea {
+        @apply absolute inset-0;
+    }
+
+    &__floatingMenu {
+        @apply fixed w-screen max-w-60 max-h-80 p-4 bg-theme_neutral-800 border border-theme_neutral-600 rounded overflow-y-auto invisible;
+
+        &[class*="show"] {
+            @apply absolute visible;
+        }
+
+        &[class*="right"] {
+            @apply -translate-x-full;
+        }
+
+        &[class*="bottom"] {
+            @apply -translate-y-full;
+        }
+    }
+}
