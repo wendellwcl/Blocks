@@ -1,0 +1,50 @@
+.speedDial {
+    @apply absolute right-4 bottom-4 w-14 h-14;
+
+    &[class*="show"],
+    &[class*="toggle-show"] {
+        .speedDial {
+            &__trigger {
+                @apply rotate-45;
+            }
+
+            &__list {
+                @apply flex;
+            }
+        }
+    }
+
+    &__trigger {
+        @apply absolute inset-0 rounded-full text-4xl bg-theme_brand transition;
+    }
+
+    &__icon {
+        @apply absolute inset-0;
+
+        &:before,
+        &:after {
+            @apply content-[''] absolute left-1/2 top-1/2 -translate-x-[1px] -translate-y-[calc(100%-1px)] w-2 h-2 border-2 border-theme_neutral-0 border-t-0 border-r-0;
+        }
+
+        &:after {
+            @apply origin-bottom-left rotate-180 -translate-y-[calc(100%+1px)] translate-x-[1px];
+        }
+    }
+
+    &__list {
+        @apply absolute bottom-full left-1/2 -translate-x-1/2 w-10 mb-2 hidden flex-col-reverse gap-2;
+    }
+
+    &__item {
+        @apply w-full aspect-square bg-theme_neutral-600 rounded-full flex items-center justify-center cursor-pointer animate-[scale_0.2s];
+
+        @keyframes scale {
+            from {
+                @apply scale-0;
+            }
+            to {
+                @apply scale-100;
+            }
+        }
+    }
+}
