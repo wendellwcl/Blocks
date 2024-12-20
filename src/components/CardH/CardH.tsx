@@ -1,22 +1,20 @@
-import Image from "next/image";
-
-import styles from "./CardH.module.scss";
+import styles from "./CardH.module.css";
 
 interface CardHProps {
-    imgSrc: string;
-    imgAlt: string;
     title: string;
     contentText: string;
+    imgSrc: string;
+    imgAlt?: string;
 }
 
-export default function CardH({ imgSrc, imgAlt, title, contentText }: CardHProps) {
+export default function CardH({ title, contentText, imgSrc, imgAlt }: CardHProps) {
     return (
-        <div className={styles.cardH}>
-            <Image width={720} height={720} src={imgSrc} alt={imgAlt} className={styles.cardH__img} />
+        <article className={styles.cardH}>
+            <img src={imgSrc} alt={imgAlt || ""} className={styles.cardH__img} />
             <div className={styles.cardH__body}>
-                <h6 className={styles.cardH__title}>{title}</h6>
+                <p className={styles.cardH__title}>{title}</p>
                 <p>{contentText}</p>
             </div>
-        </div>
+        </article>
     );
 }

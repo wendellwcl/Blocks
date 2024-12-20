@@ -1,0 +1,17 @@
+/* Variables */
+.progressBar {
+    --color-brand: var(--color-theme_brand); /* Modify to your variable */
+    --color-bg: var(--color-theme_neutral-800); /* Modify to your variable */
+}
+
+.progressBar {
+    width: 100%;
+    height: 0.5rem;
+    background-color: var(--color-bg);
+    border-radius: 0.75rem;
+    overflow: hidden;
+}
+
+.progressBar__bar {
+    fill: var(--color-brand);
+}

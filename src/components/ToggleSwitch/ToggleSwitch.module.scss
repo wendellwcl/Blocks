@@ -1,8 +1,8 @@
-.toggle-switch {
+.toggleSwitch {
     @apply inline-block w-14 h-8 rounded-full bg-theme_neutral-800 border border-theme_neutral-600 relative cursor-pointer;
 
-    &:has(.toggle-switch__checkbox:checked) {
-        .toggle-switch__slider {
+    &:has(.toggleSwitch__checkbox:checked) {
+        .toggleSwitch__slider {
             @apply left-[calc(100%-2px)] -translate-x-full bg-theme_brand;
         }
     }

@@ -1,34 +1,37 @@
 "use client";
 
-import { MouseEvent } from "react";
+import { useState } from "react";
 
-import styles from "./Accordion.module.scss";
+import styles from "./Accordion.module.css";
 
 interface AccordionProps {
+    id: string;
     title: string;
-    contentText: string;
+    content: string;
 }
 
-export default function Accordion({ title, contentText }: AccordionProps) {
-    /**
-     * Toggles the open or closed state of an accordion element by adding or removing the "open" class.
-     *
-     * @param e - click event capture
-     */
-    function toggleAccordion(e: MouseEvent): void {
-        const targetEl: HTMLButtonElement = e.target as HTMLButtonElement; // Cast the event target to an HTMLButtonElement
-        const parentEl = targetEl.parentElement; // Get the parent element of the button
-        parentEl ? parentEl?.classList.toggle("open") : null; // If the parent element exists, toggle the "open" class on it
+export default function Accordion({ id, title, content }: AccordionProps) {
+    const [isOpen, setIsOpen] = useState<boolean>(false);
 
-        return;
+    // Toggles the open or closed state of an accordion element.
+    function toggleAccordion(): void {
+        setIsOpen((prev) => !prev);
     }
 
     return (
-        <div className={styles.accordion}>
-            <button className={styles.accordion__header} onClick={(e) => toggleAccordion(e)}>
+        <div className={`${styles.accordion}${isOpen ? " open" : ""}`}>
+            <button
+                className={styles.accordion__header}
+                onClick={toggleAccordion}
+                aria-expanded={isOpen}
+                id={id}
+                aria-controls={`${id}-content`}
+            >
                 {title}
             </button>
-            <div className={styles.accordion__content}>{contentText}</div>
+            <div className={styles.accordion__content} id={`${id}-content`} aria-hidden={!isOpen}>
+                {content}
+            </div>
         </div>
     );
 }

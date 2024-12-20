@@ -1,5 +1,3 @@
-@import "../../styles/mixins.scss";
-
 .checkbox {
     @apply block relative pl-8 cursor-pointer select-none;
 
@@ -11,8 +9,7 @@
 
     &:has(> .checkbox__input:focus) {
         .checkbox__checkmark {
-            @include focus-default;
-            @apply border-theme_brand;
+            @apply border-theme_brand outline outline-1 outline-theme_brand-border shadow-[0_0_5px] shadow-theme_brand-border;
         }
     }
 

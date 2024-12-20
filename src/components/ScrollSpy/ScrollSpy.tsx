@@ -2,7 +2,7 @@
 
 import React, { useEffect, useRef, useState } from "react";
 
-import styles from "./ScrollSpy.module.scss";
+import styles from "./ScrollSpy.module.css";
 
 interface ScrollSpyProps {
     children: React.ReactElement[];
@@ -31,8 +31,6 @@ export default function ScrollSpy({ children }: ScrollSpyProps) {
 
         // Adds the "active" class to the corresponding anchor element (target) of the current content in the viewport
         (targetEl as HTMLAnchorElement).classList.add("active");
-
-        return;
     }
 
     // Check which section is the current content in the viewport.
@@ -50,8 +48,6 @@ export default function ScrollSpy({ children }: ScrollSpyProps) {
             const navTarget = navItems[navItems.length - 1];
 
             handleActive(navTarget as EventTarget); // Add 'active' class
-
-            return;
         }
 
         // Get all child nodes of the content section
@@ -70,8 +66,6 @@ export default function ScrollSpy({ children }: ScrollSpyProps) {
                 handleActive(navTarget as EventTarget); // Add 'active' class
             }
         });
-
-        return;
     }
 
     useEffect(() => {
@@ -99,19 +93,23 @@ export default function ScrollSpy({ children }: ScrollSpyProps) {
     if (loading) return null;
 
     return (
-        <div className={styles.scrollSpy__container}>
-            <nav className={styles.scrollSpy__nav}>
+        <div className={styles.scrollSpy}>
+            <nav className={styles.scrollSpy__nav} aria-label="Content navigation section">
                 <ul className={styles.scrollSpy__list} ref={navListRef}>
                     {navItems.map((item, index) => (
                         <li className={styles.scrollSpy__item} key={index}>
-                            <a className={`${styles.scrollSpy__link} ${index === 0 && "active"}`} href={`#${item.id}`}>
+                            <a
+                                className={`${styles.scrollSpy__link} ${index === 0 && "active"}`}
+                                href={`#${item.id}`}
+                                aria-current={index === 0 ? "page" : undefined}
+                            >
                                 {item.navText}
                             </a>
                         </li>
                     ))}
                 </ul>
             </nav>
-            <section className={styles.scrollSpy__content} ref={contentRef} onScroll={handleScroll}>
+            <section className={styles.scrollSpy__content} ref={contentRef} onScroll={handleScroll} role="region">
                 {children}
             </section>
         </div>

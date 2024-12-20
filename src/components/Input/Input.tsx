@@ -1,8 +1,8 @@
 "use client";
 
-import { InputHTMLAttributes, FocusEvent as ReactFocusEvent } from "react";
+import { InputHTMLAttributes, useRef, useState } from "react";
 
-import styles from "./Input.module.scss";
+import styles from "./Input.module.css";
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
     label: string;
@@ -12,18 +12,16 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
 }
 
 export default function Input({ label, placeholder, type, id, ...props }: InputProps) {
-    /**
-     * Checks whether the input element is filled and manages the 'filled' class to indicate this state.
-     * @param e - input blur event
-     */
-    function handleFilled(e: ReactFocusEvent<HTMLInputElement>): void {
-        // If the input field has a value
-        if (e.currentTarget.value) {
-            e.currentTarget.classList.add("filled"); // Add 'filled' class
-        } else {
-            e.currentTarget.classList.remove("filled"); // Else remove 'filled' class
-        }
-        return;
+    const inputRef = useRef<HTMLInputElement>(null);
+
+    const [isFilled, setIsFilled] = useState<boolean>(false);
+
+    // Checks whether the input element is filled and manages the 'filled' state.
+    function handleFilled(): void {
+        const inputEl = inputRef.current!;
+
+        // Check if the input is filled
+        inputEl.value ? setIsFilled(true) : setIsFilled(false);
     }
 
     return (
@@ -32,12 +30,16 @@ export default function Input({ label, placeholder, type, id, ...props }: InputP
                 {label}
             </label>
             <input
-                className={styles.input__input}
+                className={`${styles.input__input} ${isFilled ? "filled" : ""}`}
                 id={id}
                 type={type}
                 placeholder={placeholder}
+                onBlur={handleFilled}
+                ref={inputRef}
+                aria-required={props.required ? "true" : "false"}
+                aria-invalid={props["aria-invalid"] || false}
+                aria-describedby={props["aria-describedby"]}
                 {...props}
-                onBlur={(e) => handleFilled(e)}
             />
         </div>
     );

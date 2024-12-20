@@ -1,5 +1,19 @@
-@import "../../styles/mixins.scss";
-
 .button {
-    @include btn-default;
+    @apply p-2 rounded bg-theme_brand transition ease-out cursor-pointer;
+
+    &:hover {
+        @apply bg-theme_brand-hover;
+    }
+
+    &:focus {
+        @apply outline outline-1 outline-theme_brand-border shadow-[0_0_5px] shadow-theme_brand-border;
+    }
+
+    &:disabled {
+        @apply opacity-50 cursor-not-allowed;
+
+        &:hover {
+            @apply bg-theme_brand;
+        }
+    }
 }

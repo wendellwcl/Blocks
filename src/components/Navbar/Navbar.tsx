@@ -1,31 +1,25 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useState } from "react";
 
-import styles from "./Navbar.module.scss";
+import styles from "./Navbar.module.css";
 
 interface NavbarProps {
-    brand: { brandImgPath: string; brandAltText: string; brandUrl: string };
+    brand: { brandImgPath: string; brandUrl: string };
     navLinks?: { text: string; url: string }[];
 }
 
 export default function Navbar({ brand, navLinks }: NavbarProps) {
-    const navRef = useRef<HTMLUListElement>(null);
+    const [isOpen, setIsOpen] = useState<boolean>(false);
 
-    //Toggles the display or hidden state of the nav by adding or removing the "show" class.
+    //Toggles the display or hidden state of the navlist.
     function toggleNav(): void {
-        const nav = navRef.current;
-        nav?.classList.toggle("show");
-
-        return;
+        setIsOpen((prev) => !prev);
     }
 
-    //Hide the navbar by removing the "show" class.
+    //Hide the navlist.
     function closeNav(): void {
-        const nav = navRef.current;
-        nav?.classList.remove("show");
-
-        return;
+        setIsOpen(false);
     }
 
     //Adding the function to hide the navbar when resizing the screen.
@@ -39,28 +33,45 @@ export default function Navbar({ brand, navLinks }: NavbarProps) {
 
     return (
         <div className={styles.navbar}>
-            <nav className={styles.navbar__container}>
+            <nav className={styles.navbar__container} role="navigation" aria-label="Main Navigation">
                 <a href={brand.brandUrl} className={styles.navbar__brand}>
-                    <img src={brand.brandImgPath || "/"} alt={brand.brandAltText} />
+                    <img src={brand.brandImgPath || "/"} alt={"Logo"} />
                 </a>
                 {navLinks && navLinks?.length > 0 && (
                     <>
-                        <ul className={styles.navbar__nav} ref={navRef}>
+                        <ul
+                            className={`${styles.navbar__nav} ${isOpen ? "show" : ""}`}
+                            role="menu"
+                            aria-hidden={!isOpen}
+                        >
                             {navLinks.map((item, index) => (
-                                <li key={index} className={styles.navbar__item} onClick={closeNav}>
-                                    <a href={item.url} className={styles.navbar__link}>
+                                <li key={index} className={styles.navbar__item} onClick={closeNav} role="none">
+                                    <a href={item.url} className={styles.navbar__link} role="menuitem">
                                         {item.text}
                                     </a>
                                 </li>
                             ))}
                         </ul>
-                        <button className={styles.navbar__toggleBtn} onClick={toggleNav}>
+                        <button
+                            className={styles.navbar__toggleBtn}
+                            onClick={toggleNav}
+                            aria-expanded={isOpen}
+                            aria-label={isOpen ? "Close menu" : "Open menu"}
+                            aria-controls="menu"
+                        >
                             <span className={styles.navbar__togglerIcon}></span>
                         </button>
                     </>
                 )}
             </nav>
-            <div className={styles.navbar__backdrop} onClick={closeNav}></div>
+            {isOpen && (
+                <div
+                    className={styles.navbar__backdrop}
+                    onClick={closeNav}
+                    role="presentation"
+                    aria-hidden="true"
+                ></div>
+            )}
         </div>
     );
 }

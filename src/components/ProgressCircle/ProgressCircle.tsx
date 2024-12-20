@@ -1,6 +1,6 @@
 "use client";
 
-import styles from "./ProgressCircle.module.scss";
+import styles from "./ProgressCircle.module.css";
 
 interface ProgressCircleProps {
     size: number;
@@ -14,22 +14,33 @@ export default function ProgressCircle({ size, percentage }: ProgressCircleProps
     const strokeWidth = size * 0.1;
 
     return (
-        <svg width={size} height={size} className={styles["progress-circle__container"]}>
+        <svg
+            width={size}
+            height={size}
+            className={styles.progressCircle}
+            role="progressbar"
+            aria-valuenow={percentage}
+            aria-valuemin={0}
+            aria-valuemax={100}
+            aria-label="Loading progress"
+        >
             <circle
-                className={styles["progress-circle__circle"]}
+                className={styles.progressCircle__circle}
                 cx={circlePosition}
                 cy={circlePosition}
                 r={circleR}
                 strokeWidth={strokeWidth}
+                aria-hidden="true"
             />
             <circle
-                className={`${styles["progress-circle__circle"]} ${styles["progress-circle__circle--progress"]}`}
+                className={`${styles.progressCircle__circle} ${styles["progressCircle__circle--progress"]}`}
                 cx={circlePosition}
                 cy={circlePosition}
                 r={circleR}
                 strokeWidth={strokeWidth}
                 strokeDasharray={circlePerimeter}
                 strokeDashoffset={circlePerimeter}
+                aria-hidden="true"
             >
                 <animate
                     attributeName="stroke-dashoffset"

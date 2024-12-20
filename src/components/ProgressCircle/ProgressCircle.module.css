@@ -1,0 +1,19 @@
+/* Variables */
+.progressCircle {
+    --color-brand: var(--color-theme_brand); /* Modify to your variable */
+    --color-bg: var(--color-theme_neutral-800); /* Modify to your variable */
+}
+
+.progressCircle {
+    transform: rotate(-90deg);
+}
+
+.progressCircle__circle {
+    fill: none;
+    stroke: var(--color-bg);
+}
+
+.progressCircle__circle--progress {
+    stroke: var(--color-brand);
+    stroke-linecap: round;
+}

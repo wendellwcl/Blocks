@@ -1,15 +1,15 @@
-import styles from "./SkeletonCard.module.scss";
+import styles from "./SkeletonCard.module.css";
 
 export default function SkeletonCard() {
     return (
-        <div className={styles["skeleton-card"]}>
-            <div className={styles["skeleton-card__img"]}></div>
-            <div className={styles["skeleton-card__body"]}>
-                <span className={styles["skeleton-card__title"]}></span>
-                <span className={styles["skeleton-card__text"]}>
-                    <span className={styles["skeleton-card__text__line"]}></span>
-                    <span className={styles["skeleton-card__text__line"]}></span>
-                    <span className={styles["skeleton-card__text__line"]}></span>
+        <div className={styles.skeletonCard} aria-busy="true" aria-label="Loading card content" role="status">
+            <div className={styles.skeletonCard__img} aria-hidden="true"></div>
+            <div className={styles.skeletonCard__body}>
+                <span className={styles.skeletonCard__title} aria-hidden="true"></span>
+                <span className={styles.skeletonCard__text}>
+                    <span className={styles.skeletonCard__text__line} aria-hidden="true"></span>
+                    <span className={styles.skeletonCard__text__line} aria-hidden="true"></span>
+                    <span className={styles.skeletonCard__text__line} aria-hidden="true"></span>
                 </span>
             </div>
         </div>

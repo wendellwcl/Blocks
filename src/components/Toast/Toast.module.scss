@@ -1,14 +1,8 @@
-@import "../../styles/mixins.scss";
-
 .toast {
     @apply fixed bottom-10 -right-10 translate-x-full max-w-[calc(100%-80px)] sm:max-w-96 px-4 py-2 flex justify-between gap-1 bg-theme_neutral-800 border border-theme_neutral-600 rounded transition-all;
 
     &[class*="show"] {
         @apply right-10 translate-x-0;
-    }
-
-    &__trigger {
-        @include btn-default;
     }
 
     &__title {

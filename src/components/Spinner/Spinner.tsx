@@ -1,4 +1,4 @@
-import styles from "./Spinner.module.scss";
+import styles from "./Spinner.module.css";
 
 interface SpinnerProps {
     size: number;
@@ -11,7 +11,15 @@ export default function Spinner({ size }: SpinnerProps) {
     const strokeWidth = (size / 2) * 0.2;
 
     return (
-        <svg className={styles.spinner} width={size} height={size}>
+        <svg
+            className={styles.spinner}
+            width={size}
+            height={size}
+            role="img"
+            aria-label="Loading, please wait..."
+            tabIndex={-1}
+        >
+            <title>Loading, please wait..."</title>
             <circle
                 className={styles.spinner__circle}
                 cx={circlePosition}

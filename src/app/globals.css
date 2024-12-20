@@ -1,3 +1,21 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+    --color-theme_brand: #7834e5;
+    --color-theme_brand-hover: #6b1dd4;
+    --color-theme_brand-border: #714cc3;
+    --color-theme_neutral: #111113;
+    --color-theme_neutral-900: #19191b;
+    --color-theme_neutral-800: #222325;
+    --color-theme_neutral-700: #292a2e;
+    --color-theme_neutral-600: #303136;
+    --color-theme_neutral-500: #393a40;
+    --color-theme_neutral-400: #46484f;
+    --color-theme_neutral-300: #5f606a;
+    --color-theme_neutral-200: #6c6e79;
+    --color-theme_neutral-100: #797b86;
+    --color-theme_neutral-50: #b2b3bd;
+    --color-theme_neutral-0: #eeeef0;
+}

@@ -1,14 +1,20 @@
-import styles from "./ToggleSwitch.module.scss";
+import { InputHTMLAttributes } from "react";
 
-interface ToggleSwitchProps {
-    default_actived?: boolean;
-}
+import styles from "./ToggleSwitch.module.css";
 
-export default function ToggleSwitch({ default_actived }: ToggleSwitchProps) {
+interface ToggleSwitchProps extends InputHTMLAttributes<HTMLInputElement> {}
+
+export default function ToggleSwitch({ ...props }: ToggleSwitchProps) {
     return (
-        <label className={styles["toggle-switch"]}>
-            <input className={styles["toggle-switch__checkbox"]} type="checkbox" defaultChecked={default_actived} />
-            <span className={styles["toggle-switch__slider"]}></span>
+        <label className={styles.toggleSwitch}>
+            <input
+                className={styles.toggleSwitch__checkbox}
+                type="checkbox"
+                role="switch"
+                aria-checked={props.defaultChecked}
+                {...props}
+            />
+            <span className={styles.toggleSwitch__slider}></span>
         </label>
     );
 }

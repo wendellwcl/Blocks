@@ -1,0 +1,20 @@
+/* Variables */
+.spinner {
+    --color-brand: var(--color-theme_brand); /* Modify to your variable */
+}
+
+.spinner {
+    animation: spin 1s linear infinite;
+}
+
+.spinner__circle {
+    fill: none;
+    stroke: var(--color-brand);
+    stroke-linecap: round;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}

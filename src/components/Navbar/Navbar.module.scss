@@ -38,15 +38,15 @@
 
         &:before,
         &:after {
-            @apply content-[''] absolute block w-full h-full bg-inherit rounded-full;
+            @apply content-[''] absolute left-0 block w-full h-full bg-inherit rounded-full;
         }
 
         &:before {
-            @apply left-0 -top-2;
+            @apply -top-2;
         }
 
         &:after {
-            @apply left-0 -bottom-2;
+            @apply -bottom-2;
         }
     }
 

@@ -1,6 +1,8 @@
 "use client";
 
-import styles from "./HoverCard.module.scss";
+import { useRef, useState } from "react";
+
+import styles from "./HoverCard.module.css";
 
 interface HoverCardProps {
     text: string;
@@ -8,14 +10,19 @@ interface HoverCardProps {
 }
 
 export default function HoverCard({ text, children }: HoverCardProps) {
+    const triggerRef = useRef<HTMLDivElement>(null);
+    const floatingRef = useRef<HTMLDivElement>(null);
+
+    const [isFloatingVisible, setIsFloatingVisible] = useState<boolean>(false);
+
     /**
      * Handles the display of the floating element by checking the trigger element's position
      * and applying the appropriate classes for proper alignment and visibility.
      * @param e - mouse enter event
      */
-    function showFloatingEl(e: React.MouseEvent<HTMLDivElement>): void {
+    function showFloatingEl(): void {
         // Get the position and dimensions of the trigger element (the one being hovered over)
-        const triggerEl = e.currentTarget;
+        const triggerEl = triggerRef.current!;
         const triggerElPosition = triggerEl.getBoundingClientRect();
         const [xAxis, yAxis] = [
             triggerElPosition.x + triggerElPosition.width / 2, // X-axis center of the trigger element
@@ -23,7 +30,7 @@ export default function HoverCard({ text, children }: HoverCardProps) {
         ];
 
         // Find the floating element and get its dimensions
-        const floatingEl = triggerEl.querySelector("[data-floating]");
+        const floatingEl = floatingRef.current!;
         const floatingElPosition = floatingEl?.getBoundingClientRect();
         const [floatingElWidth, floatingElHeight] = [floatingElPosition?.width, floatingElPosition?.height];
 
@@ -33,47 +40,58 @@ export default function HoverCard({ text, children }: HoverCardProps) {
         //Check the position of the floating element relative to the X-axis
         if (xAxis < floatingElWidth! / 2) {
             // If the floating element would go off-screen to the left, add the "left" class
-            e.currentTarget.classList.add("left");
+            triggerEl.classList.add("left");
         } else if (xAxis + floatingElWidth! / 2 > screenWidth) {
             // If the floating element would go off-screen to the right, add the "right" class
-            e.currentTarget.classList.add("right");
+            triggerEl.classList.add("right");
         }
 
         // Check the position of the floating element relative to the Y-axis
         if (yAxis + triggerElPosition.height / 2 + (floatingElHeight! + 4) > screenHeight) {
             // If the floating element would go off-screen at the bottom, add the "top" class
-            e.currentTarget.classList.add("bottom");
+            triggerEl.classList.add("bottom");
         }
 
         // Add the "show" class to make the floating element visible
-        e.currentTarget.classList.add("show");
+        triggerEl.classList.add("show");
 
-        return;
+        // Updates the state regarding the aria-expanded accessibility attribute
+        setIsFloatingVisible(true);
     }
 
     /**
      * Hides the floating element by removing all applied positioning and visibility classes.
      * @param e - mouse leave event
      */
-    function hiddenFloatingEl(e: React.MouseEvent<HTMLDivElement>): void {
-        e.currentTarget.classList.remove("show"); // Remove the "show" class to hide the floating element
+    function hiddenFloatingEl(): void {
+        const triggerEl = triggerRef.current!;
+
+        triggerEl.classList.remove("show"); // Remove the "show" class to hide the floating element
 
         // Remove all positioning classes
-        e.currentTarget.classList.remove("left");
-        e.currentTarget.classList.remove("right");
-        e.currentTarget.classList.remove("bottom");
+        triggerEl.classList.remove("left");
+        triggerEl.classList.remove("right");
+        triggerEl.classList.remove("bottom");
 
-        return;
+        // Updates the state regarding the aria-expanded accessibility attribute
+        setIsFloatingVisible(false);
     }
 
     return (
         <div
             className={styles.hoverCard}
-            onMouseEnter={(e) => showFloatingEl(e)}
-            onMouseLeave={(e) => hiddenFloatingEl(e)}
+            onMouseEnter={showFloatingEl}
+            onMouseLeave={hiddenFloatingEl}
+            ref={triggerRef}
+            onFocus={showFloatingEl}
+            onBlur={hiddenFloatingEl}
+            tabIndex={0}
+            role="button"
+            aria-haspopup="true"
+            aria-expanded={isFloatingVisible}
         >
             {text}
-            <div className={styles.hoverCard__floating} data-floating>
+            <div className={styles.hoverCard__floating} ref={floatingRef} role="tooltip">
                 {children}
             </div>
         </div>

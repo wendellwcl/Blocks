@@ -1,6 +1,6 @@
 import { InputHTMLAttributes } from "react";
 
-import styles from "./RadioInput.module.scss";
+import styles from "./RadioInput.module.css";
 
 interface RadioInputProps extends InputHTMLAttributes<HTMLInputElement> {
     label: string;
@@ -11,9 +11,16 @@ interface RadioInputProps extends InputHTMLAttributes<HTMLInputElement> {
 export default function RadioInput({ label, id, name, ...props }: RadioInputProps) {
     return (
         <label className={styles.radio} htmlFor={id}>
-            <input className={styles.radio__input} type="radio" name={name} id={id} {...props} />
-            <span className={styles.radio__checkmark}></span>
-            {label}
+            <input
+                className={styles.radio__input}
+                type="radio"
+                name={name}
+                id={id}
+                {...props}
+                aria-labelledby={`${id}-label`}
+            />
+            <span className={styles.radio__checkmark} aria-hidden="true"></span>
+            <span id={`${id}-label`}>{label}</span>
         </label>
     );
 }

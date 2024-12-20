@@ -1,16 +1,16 @@
 "use client";
 
-import styles from "./Button.module.scss";
+import { ButtonHTMLAttributes } from "react";
 
-interface ButtonProps {
+import styles from "./Button.module.css";
+
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     text: string;
-    onCLickFunction?: () => {};
-    disabled?: boolean;
 }
 
-export default function Button({ text, onCLickFunction, disabled = false }: ButtonProps) {
+export default function Button({ text, ...props }: ButtonProps) {
     return (
-        <button className={styles.button} onClick={onCLickFunction} disabled={disabled}>
+        <button className={styles.button} {...props} aria-disabled={props.disabled || undefined}>
             {text}
         </button>
     );

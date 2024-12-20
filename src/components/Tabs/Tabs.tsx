@@ -2,7 +2,7 @@
 
 import React, { MouseEvent as ReactMouseEvent, useEffect, useRef } from "react";
 
-import styles from "./Tabs.module.scss";
+import styles from "./Tabs.module.css";
 
 interface TabsProps {
     children: React.ReactNode[];
@@ -19,7 +19,7 @@ export default function Tabs({ children }: TabsProps) {
      * @param e - The mouse event triggered by clicking a header.
      * @param id - The identifier of the content to show.
      */
-    function handleShowContent(e: ReactMouseEvent, id: string) {
+    function handleShowContent(e: ReactMouseEvent, id: string): void {
         // Get the header elements
         const header = headerListRef.current!;
         const headerElements = header.querySelectorAll("*");
@@ -39,8 +39,6 @@ export default function Tabs({ children }: TabsProps) {
         // Add the 'show' class to the target content element
         const target = content.querySelector(`[data-target=${id}]`);
         target?.classList.add("show");
-
-        return;
     }
 
     // Effect to validate children components on mount
@@ -59,16 +57,21 @@ export default function Tabs({ children }: TabsProps) {
     }, []);
 
     return (
-        <div className={styles["tabs"]}>
-            <div className={styles["tabs__header"]}>
-                <ul className={styles["tabs__list"]} ref={headerListRef}>
+        <div className={styles.tabs}>
+            <div className={styles.tabs__header}>
+                <ul className={styles.tabs__list} ref={headerListRef} role="tablist">
                     {children.map(
                         (el, idx) =>
                             React.isValidElement(el) && (
-                                <li key={idx} className={styles["tabs__item"]}>
+                                <li key={idx} className={styles.tabs__item}>
                                     <button
-                                        className={`${styles["tabs__btn"]} ${idx === 0 ? "active" : ""}`}
+                                        id={`tab-${idx}`}
+                                        className={`${styles.tabs__btn} ${idx === 0 ? "active" : ""}`}
                                         onClick={(e) => handleShowContent(e, el.props.id)}
+                                        role="tab"
+                                        aria-selected={idx === 0 ? "true" : "false"}
+                                        aria-controls={`tabpanel-${idx}`}
+                                        tabIndex={idx === 0 ? 0 : -1}
                                     >
                                         {el.props["data-header-text"] || el.props.id}
                                     </button>
@@ -77,14 +80,18 @@ export default function Tabs({ children }: TabsProps) {
                     )}
                 </ul>
             </div>
-            <div className={styles["tabs__content"]} ref={contentRef}>
+            <div className={styles.tabs__content} ref={contentRef}>
                 {children.map(
                     (item, idx) =>
                         React.isValidElement(item) && (
                             <div
                                 key={idx}
-                                className={`${styles["tabs__wrapper"]} ${idx === 0 ? "show" : ""}`}
+                                id={`tabpanel-${idx}`}
+                                className={`${styles.tabs__wrapper} ${idx === 0 ? "show" : ""}`}
                                 data-target={item.props.id}
+                                role="tabpanel"
+                                aria-labelledby={`tab-${idx}`}
+                                aria-hidden={idx === 0 ? "false" : "true"}
                             >
                                 {item}
                             </div>

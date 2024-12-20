@@ -1,0 +1,41 @@
+/* Variables */
+.select {
+    --color-brand: var(--color-theme_brand); /* Modify to your variable */
+    --color-bg: var(--color-theme_neutral-800); /* Modify to your variable */
+}
+
+.select {
+    width: 100%;
+    position: relative;
+}
+
+.select::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 1rem;
+    transform: translate(0%, -8px) rotate(45deg);
+    width: 12px;
+    height: 12px;
+    border: 3px solid var(--color-brand);
+    border-top: none;
+    border-left: none;
+    pointer-events: none;
+}
+
+.select__element {
+    appearance: none;
+    width: 100%;
+    padding: 1rem 0.5rem;
+    padding-right: 2.5rem;
+    background-color: var(--color-bg);
+    border-radius: 0.25rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+.select__element::-ms-expand {
+    display: none; /* Hide the IE arrow */
+}

@@ -1,0 +1,71 @@
+/* Variables */
+.radio {
+    --color-brand: var(--color-theme_brand); /* Modify to your variable */
+    --color-brand-border: var(--color-theme_brand-border); /* Modify to your variable */
+    --color-bg-light: var(--color-theme_neutral-800); /* Modify to your variable */
+    --color-bg-light: var(--color-theme_neutral-600); /* Modify to your variable */
+    --color-border: var(--color-theme_neutral-600); /* Modify to your variable */
+    --color-checkmark: var(--color-theme_neutral-0); /* Modify to your variable */
+}
+
+.radio {
+    display: block;
+    position: relative;
+    padding-left: 2rem;
+    cursor: pointer;
+}
+
+.radio:hover .radio__checkmark {
+    background-color: var(--color-bg-light);
+}
+
+.radio:has(> .radio__input:focus) .radio__checkmark {
+    border: 1px solid var(--color-brand);
+    outline: 1px solid var(--color-brand-border);
+    box-shadow: 0 0 5px var(--color-brand-border);
+}
+
+.radio:has(> .radio__input:checked) .radio__checkmark {
+    background-color: var(--color-brand);
+}
+
+.radio:has(> .radio__input:checked) .radio__checkmark::after {
+    display: block;
+}
+
+.radio:has(> .radio__input:disabled) {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.radio__checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1.5rem;
+    height: 1.5rem;
+    background-color: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: 9999px;
+}
+
+.radio__checkmark::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 9999px;
+    background-color: var(--color-checkmark);
+    display: none;
+}
+
+.radio__input {
+    position: absolute;
+    width: 0;
+    height: 0;
+    opacity: 0;
+    cursor: pointer;
+}

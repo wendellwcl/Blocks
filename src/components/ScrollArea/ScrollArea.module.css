@@ -1,0 +1,61 @@
+/* Variables */
+.scrollArea {
+    --color-brand: var(--color-theme_brand); /* Modify to your variable */
+    --color-brand-hover: var(--color-theme_brand-hover); /* Modify to your variable */
+}
+
+.scrollArea {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.scrollArea[class*="overflow"] {
+    padding-right: 1.5rem;
+}
+
+.scrollArea[class*="overflow"] .scrollArea__scrollBar,
+.scrollArea[class*="overflow"] .scrollArea__scrollThumb {
+    display: block;
+}
+
+.scrollArea__content {
+    width: 100%;
+    height: 100%;
+    padding: 0.5rem;
+    overflow-y: scroll;
+    scrollbar-width: none; /* Remove default slash in Firefox */
+    -ms-overflow-style: none; /* Remove slash in IE/Edge */
+}
+
+.scrollArea__content::-webkit-scrollbar {
+    display: none; /* Remove slash in Chrome/Safari */
+}
+
+.scrollArea__scrollBar {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 1rem;
+    height: 100%;
+    background-color: transparent;
+    display: none;
+}
+
+.scrollArea__scrollThumb {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    width: 0.75rem;
+    background-color: var(--color-brand);
+    border-radius: 9999px;
+    display: none;
+    transition: all 150ms;
+    cursor: pointer;
+}
+
+.scrollArea__scrollThumb:hover {
+    background-color: var(--color-brand-hover);
+}

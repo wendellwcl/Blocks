@@ -1,22 +1,20 @@
-import Image from "next/image";
-
-import styles from "./CardV.module.scss";
+import styles from "./CardV.module.css";
 
 interface CardVProps {
-    imgSrc: string;
-    imgAlt: string;
     title: string;
     contentText: string;
+    imgSrc: string;
+    imgAlt?: string;
 }
 
-export default function CardV({ imgSrc, imgAlt, title, contentText }: CardVProps) {
+export default function CardV({ title, contentText, imgSrc, imgAlt }: CardVProps) {
     return (
-        <div className={styles.cardV}>
-            <Image width={720} height={720} src={imgSrc} alt={imgAlt} className={styles.cardV__img} />
+        <article className={styles.cardV}>
+            <img src={imgSrc} alt={imgAlt || ""} className={styles.cardV__img} />
             <div className={styles.cardV__body}>
-                <h6 className={styles.cardV__title}>{title}</h6>
+                <p className={styles.cardV__title}>{title}</p>
                 <p>{contentText}</p>
             </div>
-        </div>
+        </article>
     );
 }

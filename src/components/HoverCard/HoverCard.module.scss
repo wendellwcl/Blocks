@@ -1,14 +1,31 @@
-@import "../../styles/mixins.scss";
-
 .hoverCard {
-    @include btn-default;
-    @apply relative;
+    @apply p-2 rounded bg-theme_brand relative transition ease-out cursor-pointer;
+
+    &:hover {
+        @apply bg-theme_brand-hover;
+    }
+
+    &:focus {
+        @apply outline outline-1 outline-theme_brand-border shadow-[0_0_5px] shadow-theme_brand-border;
+    }
+
+    &:disabled {
+        @apply opacity-50 cursor-not-allowed;
+
+        &:hover {
+            @apply bg-theme_brand;
+        }
+    }
 
     &::after {
-        @apply content-[''] absolute inset-0 w-full h-full scale-y-[125%];
+        @apply content-[''] absolute inset-0 w-full h-full;
     }
 
     &[class*="show"] {
+        &::after {
+            @apply translate-y-1;
+        }
+
         .hoverCard {
             &__floating {
                 @apply absolute -bottom-1 left-1/2 translate-y-full -translate-x-1/2 visible;
@@ -33,6 +50,10 @@
     }
 
     &[class*="bottom"] {
+        &::after {
+            @apply -translate-y-1;
+        }
+
         .hoverCard {
             &__floating {
                 @apply bottom-full -translate-y-[4px];

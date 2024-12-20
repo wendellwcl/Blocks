@@ -1,0 +1,46 @@
+/* Variables */
+.contextMenu {
+    --color-bg: var(--color-theme_neutral-800); /* Modify to your variable */
+    --color-border: var(--color-theme_neutral-600); /* Modify to your variable */
+}
+
+.contextMenu {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.contextMenu__triggerArea {
+    position: absolute;
+    inset: 0;
+}
+
+.contextMenu__floatingMenu {
+    position: fixed;
+    width: 100vw;
+    max-width: 15rem;
+    max-height: 20rem;
+    padding: 0.5rem;
+    background-color: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: 0.25rem;
+    overflow-y: auto;
+    visibility: hidden;
+}
+
+.contextMenu__floatingMenu[class*="show"] {
+    position: absolute;
+    visibility: visible;
+}
+
+.contextMenu__floatingMenu[class*="right"] {
+    transform: translate(-100%, 0);
+}
+
+.contextMenu__floatingMenu[class*="bottom"] {
+    transform: translate(0, -100%);
+}
+
+.contextMenu__floatingMenu[class*="right"][class*="bottom"] {
+    transform: translate(-100%, -100%);
+}

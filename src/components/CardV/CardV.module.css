@@ -1,0 +1,39 @@
+/* Variables */
+.cardV {
+    --color-bg: var(--color-theme_neutral-800); /* Modify to your variable */
+    --color-bg-img: var(--color-theme_neutral-700); /* Modify to your variable */
+    --color-border: var(--color-theme_neutral-600); /* Modify to your variable */
+}
+
+.cardV {
+    width: 100%;
+    max-width: 20rem;
+    background-color: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: 0.25rem;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.cardV__img {
+    width: 100%;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+    background-color: var(--color-bg-img);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cardV__body {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.cardV__title {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+    font-weight: bold;
+}

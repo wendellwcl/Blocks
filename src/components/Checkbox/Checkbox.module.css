@@ -1,0 +1,73 @@
+/* Variables */
+.checkbox {
+    --color-brand: var(--color-theme_brand); /* Modify to your variable */
+    --color-brand-border: var(--color-theme_brand-border); /* Modify to your variable */
+    --color-bg: var(--color-theme_neutral-800); /* Modify to your variable */
+    --color-bg-hover: var(--color-theme_neutral-600); /* Modify to your variable */
+    --color-border: var(--color-theme_neutral-600); /* Modify to your variable */
+    --color-checkmark: var(--color-theme_neutral-0); /* Modify to your variable */
+}
+
+.checkbox {
+    display: block;
+    position: relative;
+    padding-left: 2rem;
+    cursor: pointer;
+    user-select: none;
+}
+
+.checkbox:hover > .checkbox__checkmark {
+    background-color: var(--color-bg-hover);
+}
+
+.checkbox:has(.checkbox__input:focus) > .checkbox__checkmark {
+    outline: 1px solid var(--color-brand-border);
+    box-shadow: 0 0 5px var(--color-brand-border);
+    border-color: var(--color-brand);
+}
+
+.checkbox:has(.checkbox__input:checked) > .checkbox__checkmark {
+    background-color: var(--color-brand);
+}
+
+.checkbox:has(.checkbox__input:checked) > .checkbox__checkmark::after {
+    content: "";
+    position: absolute;
+    left: 7px;
+    top: 2px;
+    width: 8px;
+    height: 14px;
+    border: 3px solid var(--color-checkmark);
+    border-top: 0;
+    border-left: 0;
+    transform: rotate(45deg);
+}
+
+.checkbox:has(.checkbox__input:disabled) {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.checkbox:has(.checkbox__input:disabled) > .checkbox__checkmark {
+    background-color: inherit;
+}
+
+.checkbox__input {
+    position: absolute;
+    width: 0;
+    height: 0;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.checkbox__checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1.5rem;
+    height: 1.5rem;
+    background-color: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: 0.25rem;
+    transition: all 150ms cubic-bezier(0, 0, 0.2, 1);
+}

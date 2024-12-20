@@ -2,7 +2,7 @@
 
 import { MouseEvent as ReactMouseEvent, useEffect, useRef, useState } from "react";
 
-import styles from "./ContextMenu.module.scss";
+import styles from "./ContextMenu.module.css";
 
 interface ContextMenuProps {
     children: React.ReactNode;
@@ -46,8 +46,6 @@ export default function ContextMenu({ children }: ContextMenuProps) {
 
         // Display the floating menu
         floatingMenuEl.classList.add("show");
-
-        return;
     }
 
     // This function hides the custom context menu.
@@ -58,15 +56,9 @@ export default function ContextMenu({ children }: ContextMenuProps) {
         floatingMenuEl.classList.remove("show");
         floatingMenuEl.classList.remove("right");
         floatingMenuEl.classList.remove("bottom");
-
-        return;
     }
 
     useEffect(() => {
-        // Set the parent element's position to absolute to ensure correct positioning
-        const parentEl = triggerAreaRef.current!.parentElement;
-        parentEl!.style.position = "absolute";
-
         // Add a global click listener to close the context menu
         window.addEventListener("click", closeContextMenu);
 
@@ -77,19 +69,23 @@ export default function ContextMenu({ children }: ContextMenuProps) {
     }, []);
 
     return (
-        <>
+        <div className={styles.contextMenu}>
             <div
                 className={styles.contextMenu__triggerArea}
                 ref={triggerAreaRef}
                 onContextMenu={(e) => showContextMenu(e)}
+                tabIndex={0}
+                aria-haspopup="menu"
             ></div>
             <div
                 className={styles.contextMenu__floatingMenu}
                 ref={floatingMenuRef}
                 style={{ top: `${position.yAxis}px`, left: `${position.xAxis}px` }}
+                role="menu"
+                tabIndex={-1}
             >
                 {children}
             </div>
-        </>
+        </div>
     );
 }

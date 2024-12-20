@@ -1,0 +1,71 @@
+/* Variables */
+.tooltip {
+    --color-brand: var(--color-theme_brand); /* Modify to your variable */
+}
+
+.tooltip {
+    position: relative;
+    cursor: pointer;
+}
+
+.tooltip[class*="show"] .tooltip__tipContainer {
+    position: absolute;
+    top: -2.5rem;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    visibility: visible;
+}
+
+.tooltip[class*="left"] .tooltip__tipContainer {
+    left: 0;
+    transform: translate(0%, 0%);
+}
+
+.tooltip[class*="left"] .tooltip__tipContainer::after {
+    left: 1rem;
+}
+
+.tooltip[class*="right"] .tooltip__tipContainer {
+    left: 100%;
+    transform: translate(-100%, 0%);
+}
+
+.tooltip[class*="right"] .tooltip__tipContainer::after {
+    left: calc(100% - 16px);
+}
+
+.tooltip[class*="top"] .tooltip__tipContainer {
+    top: 2.5rem;
+}
+
+.tooltip[class*="top"] .tooltip__tipContainer::after {
+    bottom: 100%;
+}
+
+.tooltip__tipContainer {
+    position: fixed;
+    max-width: 13rem;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+    background-color: var(--color-brand);
+    visibility: hidden;
+}
+
+.tooltip__tipContainer::after {
+    content: "";
+    width: 0.75rem;
+    height: 0.75rem;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, 50%) rotate(45deg);
+    background-color: inherit;
+    z-index: -10;
+}
+
+.tooltip__tip {
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}

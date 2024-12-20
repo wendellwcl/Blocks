@@ -2,20 +2,22 @@
 
 import React, { useLayoutEffect, useRef } from "react";
 
-import styles from "./Carousel.module.scss";
+import styles from "./Carousel.module.css";
 
-export default function Carousel({ children }: { children: React.ReactNode }) {
+interface CarouselProps {
+    children: React.ReactNode;
+}
+
+export default function Carousel({ children }: CarouselProps) {
     const contentRef = useRef<HTMLDivElement | null>(null);
 
     /**
      * Returns the items of the carousel from the `contentRef` container.
-     * @returns itemsArray - an array of elements.
+     * @returns an array of elements.
      */
     function getCarouselItems(): Element[] {
         const itemsCollection: HTMLCollection = contentRef.current!.children; // Access all child elements of the contentRef element
-        const itemsArray: Element[] = [...itemsCollection]; // Convert the HTMLCollection into an array of elements
-
-        return itemsArray;
+        return Array.from(itemsCollection) as HTMLElement[]; // Return an array of elements
     }
 
     /**
@@ -28,10 +30,12 @@ export default function Carousel({ children }: { children: React.ReactNode }) {
         const firstItem = carouselItems[0];
         const lastItem = carouselItems[carouselItems.length - 1];
 
-        firstItem.classList.add("current"); // Mark the first item as "current"
-        contentRef.current!.prepend(lastItem); // Move the last item to the beginning to prepare for looping
+        // Mark the first item as "current"
+        firstItem.classList.add("current");
+        firstItem.setAttribute("aria-current", "true");
+        firstItem.setAttribute("tabIndex", "0");
 
-        return;
+        contentRef.current!.prepend(lastItem); // Move the last item to the beginning to prepare for looping
     }
 
     /**
@@ -59,8 +63,6 @@ export default function Carousel({ children }: { children: React.ReactNode }) {
             nextItem.classList.add("current");
             contentRef.current!.append(firstItem); // Append the first item to maintain the loop
         }
-
-        return;
     }
 
     /**
@@ -74,14 +76,14 @@ export default function Carousel({ children }: { children: React.ReactNode }) {
 
         if (carouselItems.length === 1) {
             // Clone the single item twice to create three total items
-            const clonedItem1 = carouselItems[0].cloneNode(true);
-            const clonedItem2 = carouselItems[0].cloneNode(true);
+            const clonedItem1 = carouselItems[0].cloneNode(true) as HTMLElement;
+            const clonedItem2 = carouselItems[0].cloneNode(true) as HTMLElement;
             contentRef.current!.appendChild(clonedItem1);
             contentRef.current!.appendChild(clonedItem2);
         } else if (carouselItems.length === 2) {
             // Clone each item once to create four total items
             carouselItems.forEach((item) => {
-                const clonedItem = item.cloneNode(true);
+                const clonedItem = item.cloneNode(true) as HTMLElement;
                 contentRef.current!.appendChild(clonedItem);
             });
         }
@@ -91,16 +93,18 @@ export default function Carousel({ children }: { children: React.ReactNode }) {
     }, []);
 
     return (
-        <div className={styles.carousel}>
+        <div className={styles["carousel"]} role="region" aria-roledescription="carousel" aria-live="polite">
             <button
-                className={`${styles.carousel__btn} ${styles["carousel__btn--prev"]}`}
+                className={`${styles["carousel__btn"]} ${styles["carousel__btn--prev"]}`}
                 onClick={() => handleAction("prev")}
+                aria-label="Previous item"
             ></button>
             <button
-                className={`${styles.carousel__btn} ${styles["carousel__btn--next"]}`}
+                className={`${styles["carousel__btn"]} ${styles["carousel__btn--next"]}`}
                 onClick={() => handleAction("next")}
+                aria-label="Next item"
             ></button>
-            <div className={styles.carousel__content} ref={contentRef}>
+            <div className={styles["carousel__content"]} ref={contentRef}>
                 {children}
             </div>
         </div>

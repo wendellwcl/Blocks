@@ -1,7 +1,5 @@
 .scrollSpy {
-    &__container {
-        @apply w-full h-full flex flex-col md:flex-row;
-    }
+    @apply w-full h-full flex flex-col md:flex-row;
 
     &__nav {
         @apply w-full md:w-[30%] md:max-w-48 h-auto md:h-full border-b md:border-b-0 md:border-r border-theme_brand;
@@ -16,7 +14,7 @@
     }
 
     &__link {
-        @apply block w-full h-full p-2 md:px-4 text-center md:text-left font-bold rounded truncate;
+        @apply block w-full h-full p-2 md:px-4 text-center md:text-left font-bold rounded truncate transition;
 
         &[class*="active"] {
             @apply bg-theme_brand;

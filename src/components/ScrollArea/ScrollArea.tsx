@@ -2,7 +2,7 @@
 
 import { MouseEvent as ReactMouseEvent, useLayoutEffect, useRef } from "react";
 
-import styles from "./ScrollArea.module.scss";
+import styles from "./ScrollArea.module.css";
 
 interface ScrollAreaProps {
     children: React.ReactNode;
@@ -47,8 +47,6 @@ export default function ScrollArea({ children }: ScrollAreaProps) {
         } else {
             containerRef.current!.classList.remove("overflow"); // Remove the class if there's no overflow
         }
-
-        return;
     }
 
     /**
@@ -60,8 +58,6 @@ export default function ScrollArea({ children }: ScrollAreaProps) {
         startY.current = e.clientY; // Store the initial mouse Y position
         startScrollTop.current = contentRef.current!.scrollTop; // Store the initial scroll position
         document.body.style.userSelect = "none"; // Disable text selection while dragging
-
-        return;
     }
 
     /**
@@ -84,8 +80,6 @@ export default function ScrollArea({ children }: ScrollAreaProps) {
 
         const deltaY = e.clientY - startY.current; // Difference between the current and initial mouse position
         contentRef.current!.scrollTop = startScrollTop.current + deltaY * scrollRatio; // Adjust the scroll position
-
-        return;
     }
 
     // Updates the "thumb" position when scrolling.
@@ -103,8 +97,6 @@ export default function ScrollArea({ children }: ScrollAreaProps) {
         }
 
         scrollThumbRef.current!.style.top = `${thumbTop}px`; // Set the "thumb" position
-
-        return;
     }
 
     // Disables the drag state.
@@ -131,14 +123,21 @@ export default function ScrollArea({ children }: ScrollAreaProps) {
     }, []);
 
     return (
-        <div className={styles["scrollArea__container"]} ref={containerRef}>
-            <div className={styles["scrollArea__content"]} ref={contentRef} onScroll={() => handleScroll()}>
+        <div className={styles.scrollArea} ref={containerRef} role="region" aria-label="Custom scroll area">
+            <div className={styles.scrollArea__content} ref={contentRef} onScroll={handleScroll} aria-live="polite">
                 {children}
             </div>
-            <div className={styles["scrollArea__scrollBar"]} ref={scrollBarRef}>
+            <div
+                className={styles.scrollArea__scrollBar}
+                ref={scrollBarRef}
+                role="scrollbar"
+                aria-controls="scroll-content"
+            >
                 <div
-                    className={styles["scrollArea__scrollThumb"]}
+                    className={styles.scrollArea__scrollThumb}
                     ref={scrollThumbRef}
+                    role="slider"
+                    aria-orientation="vertical"
                     onMouseDown={(e) => enableDrag(e)}
                 ></div>
             </div>

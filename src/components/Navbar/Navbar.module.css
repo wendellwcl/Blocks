@@ -1,0 +1,140 @@
+/* Variables */
+.navbar {
+    --color-brand: var(--color-theme_brand); /* Modify to your variable */
+    --color-brand-hover: var(--color-theme_brand-hover); /* Modify to your variable */
+    --color-text: var(--color-theme_neutral-0); /* Modify to your variable */
+    --color-icon: var(--color-theme_neutral-0); /* Modify to your variable */
+}
+
+.navbar {
+    position: sticky;
+    top: 0;
+}
+
+.navbar__container {
+    padding: 0.5rem 1rem;
+    height: 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--color-brand);
+    color: var(--color-text);
+    position: relative;
+    z-index: 50;
+}
+
+.navbar__brand {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    flex: none;
+}
+
+.navbar__brand img {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    object-fit: cover;
+    font-weight: bold;
+}
+
+.navbar__nav {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    transform: translate(0%, 100%);
+    width: 100%;
+    background-color: inherit;
+    display: none;
+    flex-direction: row;
+    gap: 0.25rem;
+}
+
+.navbar__nav[class*="show"] {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 1rem;
+}
+
+.navbar__link {
+    width: 100%;
+    height: 100%;
+    padding: 0.5rem 1rem;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    transition: all 150ms;
+}
+
+.navbar__link:hover {
+    background-color: var(--color-brand-hover);
+}
+
+.navbar__toggleBtn {
+    height: 100%;
+    aspect-ratio: 1/1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.navbar__togglerIcon {
+    display: block;
+    width: 2rem;
+    height: 3px;
+    background-color: var(--color-icon);
+    border-radius: 9999px;
+    position: relative;
+}
+
+.navbar__togglerIcon::before,
+.navbar__togglerIcon::after {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: inherit;
+    border-radius: 9999px;
+}
+
+.navbar__togglerIcon::before {
+    top: -0.5rem;
+}
+
+.navbar__togglerIcon::after {
+    top: 0.5rem;
+}
+
+.navbar__backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 40;
+    display: none;
+}
+
+.navbar:has(.navbar__nav[class*="show"]) .navbar__backdrop {
+    display: block;
+}
+
+@media (min-width: 768px) {
+    .navbar__nav {
+        position: relative;
+        transform: translate(0%, 0%);
+        width: auto;
+        height: 100%;
+        display: flex;
+    }
+
+    .navbar__toggleBtn {
+        display: none;
+    }
+}

@@ -1,5 +1,3 @@
-@import "../../styles/mixins.scss";
-
 .dialog {
     @apply fixed inset-0 w-full h-full p-8 items-center justify-center bg-theme_neutral bg-opacity-70 hidden;
 
@@ -44,7 +42,23 @@
     }
 
     &__button {
-        @include btn-default;
+        @apply p-2 rounded bg-theme_brand transition ease-out cursor-pointer;
+
+        &:hover {
+            @apply bg-theme_brand-hover;
+        }
+
+        &:focus {
+            @apply outline outline-1 outline-theme_brand-border shadow-[0_0_5px] shadow-theme_brand-border;
+        }
+
+        &:disabled {
+            @apply opacity-50 cursor-not-allowed;
+
+            &:hover {
+                @apply bg-theme_brand;
+            }
+        }
 
         &--neutral {
             @apply bg-theme_neutral-400;

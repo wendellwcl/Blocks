@@ -1,0 +1,91 @@
+/* Variables */
+.speedDial {
+    --color-brand: var(--color-theme_brand); /* Modify to your variable */
+    --color-icon: var(--color-theme_neutral-0); /* Modify to your variable */
+    --color-bg: var(--color-theme_neutral-600); /* Modify to your variable */
+}
+
+.speedDial {
+    position: absolute;
+    right: 1rem;
+    bottom: 1rem;
+    width: 3.5rem;
+    height: 3.5rem;
+}
+
+.speedDial[class*="show"] .speedDial__trigger,
+.speedDial[class*="toggle-show"] .speedDial__trigger {
+    transform: rotate(45deg);
+}
+
+.speedDial[class*="show"] .speedDial__list,
+.speedDial[class*="toggle-show"] .speedDial__list {
+    display: flex;
+}
+
+.speedDial__trigger {
+    position: absolute;
+    inset: 0;
+    border-radius: 9999px;
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+    background-color: var(--color-brand);
+    transition: all 150ms;
+}
+
+.speedDial__icon {
+    position: absolute;
+    inset: 0;
+}
+
+.speedDial__icon::before,
+.speedDial__icon::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-1px, calc(calc(100% - 1px) * -1));
+    width: 0.5rem;
+    height: 0.5rem;
+    border: 2px solid var(--color-icon);
+    border-top: 0;
+    border-right: 0;
+}
+
+.speedDial__icon::after {
+    transform-origin: bottom left;
+    transform: translate(1px, calc(calc(100% + 1px) * -1)) rotate(180deg);
+}
+
+.speedDial__list {
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    width: 2.5rem;
+    margin-bottom: 0.5rem;
+    display: none;
+    flex-direction: column-reverse;
+    gap: 0.5rem;
+}
+
+.speedDial__item {
+    width: 100%;
+    aspect-ratio: 1/1;
+    background-color: var(--color-bg);
+    border-radius: 9999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    animation: scale 0.2s;
+}
+
+@keyframes scale {
+    from {
+        @apply scale-0;
+    }
+    to {
+        @apply scale-100;
+    }
+}

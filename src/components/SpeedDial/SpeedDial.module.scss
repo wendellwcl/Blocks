@@ -21,12 +21,12 @@
     &__icon {
         @apply absolute inset-0;
 
-        &:before,
-        &:after {
+        &::before,
+        &::after {
             @apply content-[''] absolute left-1/2 top-1/2 -translate-x-[1px] -translate-y-[calc(100%-1px)] w-2 h-2 border-2 border-theme_neutral-0 border-t-0 border-r-0;
         }
 
-        &:after {
+        &::after {
             @apply origin-bottom-left rotate-180 -translate-y-[calc(100%+1px)] translate-x-[1px];
         }
     }

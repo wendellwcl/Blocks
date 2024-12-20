@@ -1,19 +1,17 @@
 "use client";
 
-import styles from "./Select.module.scss";
+import styles from "./Select.module.css";
 
 interface SelectProps {
     name: string;
     id: string;
-    placeholderText?: string;
     options: string[];
 }
 
-export default function Select({ name, id, placeholderText, options }: SelectProps) {
+export default function Select({ name, id, options }: SelectProps) {
     return (
-        <div className={styles.select__wrapper}>
-            <select name={name} id={id} className={styles.select__element}>
-                {placeholderText && <option value={placeholderText}>{placeholderText}</option>}
+        <div className={styles.select}>
+            <select name={name} id={id} className={styles.select__element} aria-labelledby={`${id}-label`}>
                 {options.map((item, index) => (
                     <option key={index} value={item}>
                         {item}

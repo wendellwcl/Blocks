@@ -1,14 +1,12 @@
 .slider {
-    &__container {
-        @apply w-full h-1 rounded bg-theme_neutral-600 relative;
-    }
+    @apply w-full h-2 rounded bg-theme_neutral-600 relative;
 
-    &__fill-bar,
+    &__fill,
     &__input {
-        @apply absolute left-0 top-1/2 -translate-y-1/2;
+        @apply absolute left-0 top-1/2 -translate-y-1/2 cursor-pointer;
     }
 
-    &__fill-bar {
+    &__fill {
         @apply block h-full rounded bg-theme_brand;
     }
 

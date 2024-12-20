@@ -1,6 +1,6 @@
 "use client";
 
-import styles from "./ProgressBar.module.scss";
+import styles from "./ProgressBar.module.css";
 
 interface ProgressBarProps {
     percentage: number;
@@ -8,8 +8,15 @@ interface ProgressBarProps {
 
 export default function ProgressBar({ percentage }: ProgressBarProps) {
     return (
-        <svg className={styles["progress-bar__container"]}>
-            <rect className={styles["progress-bar__bar"]} x="0" y="0" rx="12" width="0%" height="100%">
+        <svg
+            className={styles.progressBar}
+            role="progressbar"
+            aria-valuenow={percentage}
+            aria-valuemin={0}
+            aria-valuemax={100}
+            aria-label="Loading progress"
+        >
+            <rect className={styles.progressBar__bar} x="0" y="0" rx="4" width="0%" height="100%">
                 <animate
                     attributeName="width"
                     from="0%"

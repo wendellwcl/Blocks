@@ -1,11 +1,8 @@
-@import "../../styles/mixins.scss";
-
-.skeleton-card {
+.skeletonCard {
     @apply w-full max-w-80 bg-theme_neutral-800 border border-theme_neutral-600 rounded overflow-hidden cursor-wait;
 
     &__img {
-        @apply w-full aspect-video bg-theme_neutral-400;
-        @include animation-skeleton;
+        @apply w-full aspect-video bg-theme_neutral-400 animate-[skeleton_3s_infinite];
     }
 
     &__body {
@@ -13,16 +10,14 @@
     }
 
     &__title {
-        @apply w-full max-w-32 h-4 bg-theme_neutral-400;
-        @include animation-skeleton;
+        @apply w-full max-w-32 h-4 bg-theme_neutral-400 animate-[skeleton_3s_infinite];
     }
 
     &__text {
         @apply flex flex-col gap-2;
 
         &__line {
-            @apply block w-full h-4 bg-theme_neutral-400 relative;
-            @include animation-skeleton;
+            @apply block w-full h-4 bg-theme_neutral-400 relative animate-[skeleton_3s_infinite];
 
             &:nth-child(2) {
                 @apply w-2/3;
@@ -32,5 +27,17 @@
                 @apply w-4/5 hidden sm:block;
             }
         }
+    }
+}
+
+@keyframes skeleton {
+    0% {
+        @apply bg-theme_neutral-400;
+    }
+    50% {
+        @apply bg-theme_neutral-300;
+    }
+    100% {
+        @apply bg-theme_neutral-400;
     }
 }

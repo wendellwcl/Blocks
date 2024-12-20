@@ -1,0 +1,43 @@
+/* Variables */
+.toggleSwitch {
+    --color-brand: var(--color-theme_brand); /* Modify to your variable */
+    --color-bg: var(--color-theme_neutral-800); /* Modify to your variable */
+    --color-border: var(--color-theme_neutral-600); /* Modify to your variable */
+    --color-slider: var(--color-theme_neutral-200); /* Modify to your variable */
+}
+
+.toggleSwitch {
+    display: inline-block;
+    width: 3.5rem;
+    height: 2rem;
+    background-color: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: 9999px;
+    position: relative;
+    cursor: pointer;
+}
+
+.toggleSwitch:has(.toggleSwitch__checkbox:checked) .toggleSwitch__slider {
+    left: calc(100% - 2px);
+    transform: translate(-100%, -50%);
+    background-color: var(--color-brand);
+}
+
+.toggleSwitch__checkbox {
+    width: 0px;
+    height: 0px;
+    opacity: 0;
+}
+
+.toggleSwitch__slider {
+    display: block;
+    height: calc(100% - 4px);
+    position: absolute;
+    left: 2px;
+    top: 50%;
+    transform: translate(0%, -50%);
+    aspect-ratio: 1/1;
+    border-radius: 9999px;
+    background-color: var(--color-slider);
+    transition: all 150ms;
+}

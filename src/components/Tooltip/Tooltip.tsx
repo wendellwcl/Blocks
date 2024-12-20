@@ -1,19 +1,22 @@
 "use client";
 
-import styles from "./Tooltip.module.scss";
+import { FocusEvent as ReactFocusEvent, MouseEvent as ReactMouseEvent } from "react";
+
+import styles from "./Tooltip.module.css";
 
 interface TooltipProps {
     children: React.ReactNode;
     tip_text: string;
+    id: string;
 }
 
-export default function Tooltip({ children, tip_text }: TooltipProps) {
+export default function Tooltip({ children, tip_text, id }: TooltipProps) {
     /**
      * Handles the display of the floating element by checking the trigger element's position
      * and applying the appropriate classes for proper alignment and visibility.
      * @param e - mouse enter event
      */
-    function showFloatingEl(e: React.MouseEvent<HTMLDivElement>): void {
+    function showFloatingEl(e: ReactMouseEvent | ReactFocusEvent): void {
         // Get the position and dimensions of the trigger element (the one being hovered over)
         const triggerEl = e.currentTarget;
         const triggerElPosition = triggerEl.getBoundingClientRect();
@@ -55,7 +58,7 @@ export default function Tooltip({ children, tip_text }: TooltipProps) {
      * Hides the floating element by removing all applied positioning and visibility classes.
      * @param e - mouse leave event
      */
-    function hiddenFloatingEl(e: React.MouseEvent<HTMLDivElement>): void {
+    function hiddenFloatingEl(e: ReactMouseEvent | ReactFocusEvent): void {
         e.currentTarget.classList.remove("show"); // Remove the "show" class to hide the floating element
 
         // Remove all positioning classes
@@ -69,11 +72,15 @@ export default function Tooltip({ children, tip_text }: TooltipProps) {
     return (
         <div
             className={styles.tooltip}
+            tabIndex={0}
             onMouseEnter={(e) => showFloatingEl(e)}
             onMouseLeave={(e) => hiddenFloatingEl(e)}
+            onFocus={(e) => showFloatingEl(e)}
+            onBlur={(e) => hiddenFloatingEl(e)}
+            aria-describedby={`${id}-tip`}
         >
             <div className={styles.tooltip__content}>{children}</div>
-            <div className={styles.tooltip__tipContainer} data-floating>
+            <div className={styles.tooltip__tipContainer} data-floating id={`${id}-tip`} role="tooltip">
                 <p className={styles.tooltip__tip}>{tip_text}</p>
             </div>
         </div>

@@ -1,6 +1,6 @@
 "use client";
 
-import styles from "./Toast.module.scss";
+import styles from "./Toast.module.css";
 
 interface ToastProps {
     id: string;
@@ -21,7 +21,6 @@ function getToastEl(id: string): Element | null {
 
 /**
  * @important - This function is reusable and can be called from anywhere in your code to show toast notification.
- *
  * @param id - toast element id
  */
 export function showToast(id: string): void {
@@ -40,13 +39,10 @@ export function showToast(id: string): void {
         toastEl.classList.remove("show");
     }, 5000);
     hideTimeout = hideToast; // Stores the timeout ID in the global `hideTimeout` variable for potential cancellation
-
-    return;
 }
 
 /**
  * @important - This function is reusable and can be called from anywhere in your code to close toast notification.
- *
  * @param id - toast element id
  */
 export function closeToast(id: string): void {
@@ -62,18 +58,16 @@ export function closeToast(id: string): void {
 
     hideTimeout && clearTimeout(hideTimeout); // If a timeout is active, cancels it to prevent automatic hiding after the delay
     hideTimeout = null; // Resets the `hideTimeout` variable to null, as the toast is already hidden
-
-    return;
 }
 
 export default function Toast({ id, title, message }: ToastProps) {
     return (
-        <div id={id} className={styles.toast}>
+        <div id={id} className={styles.toast} role="alert" aria-live="assertive">
             <div className={styles.toast__messageContainer}>
                 <div className={styles.toast__title}>{title}</div>
                 <div>{message}</div>
             </div>
-            <button className={styles.toast__closeBtn} onClick={() => closeToast(id)}>
+            <button className={styles.toast__closeBtn} onClick={() => closeToast(id)} aria-label="Close notification">
                 &#10005;
             </button>
         </div>

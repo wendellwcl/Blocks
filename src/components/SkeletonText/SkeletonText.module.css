@@ -1,0 +1,41 @@
+/* Variables */
+.skeletonText {
+    --color-bg-light: var(--color-theme_neutral-400); /* Modify to your variable */
+    --color-bg-light-100: var(--color-theme_neutral-300); /* Modify to your variable */
+}
+
+.skeletonText {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 0.5rem 0;
+    cursor: wait;
+}
+
+.skeletonText__line {
+    width: 100%;
+    height: 1rem;
+    background-color: var(--color-bg-light);
+    animation: skeleton 3s infinite;
+}
+
+.skeletonText__line:nth-child(1) {
+    width: 83.333333%;
+}
+
+.skeletonText__line:nth-child(3) {
+    width: 66.666667%;
+}
+
+@keyframes skeleton {
+    0% {
+        background-color: var(--color-bg-light);
+    }
+    50% {
+        background-color: var(--color-bg-light-100);
+    }
+    100% {
+        background-color: var(--color-bg-light);
+    }
+}

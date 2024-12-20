@@ -1,0 +1,90 @@
+/* Variables */
+.pagination {
+    --color-brand: var(--color-theme_brand); /* Modify to your variable */
+    --color-brand-hover: var(--color-theme_brand-hover); /* Modify to your variable */
+    --color-brand-border: var(--color-theme_brand-border); /* Modify to your variable */
+    --color-arrow: var(--color-theme_neutral-0); /* Modify to your variable */
+}
+
+.pagination {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.pagination__arrow {
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+    background-color: var(--color-brand);
+    transition: all 150ms cubic-bezier(0, 0, 0.2, 1);
+    cursor: pointer;
+}
+
+.pagination__arrow:hover {
+    background-color: var(--color-brand-hover);
+}
+
+.pagination__arrow:focus {
+    outline: 1px solid var(--color-brand-border);
+    box-shadow: 0 0 5px var(--color-brand-border);
+}
+
+.pagination__arrow:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.pagination__arrow:disabled:hover {
+    background-color: var(--color-brand);
+}
+
+.pagination__arrow--prev::after,
+.pagination__arrow--next::after {
+    content: "";
+    display: block;
+    width: 0.75rem;
+    height: 0.75rem;
+    border: 3px solid var(--color-arrow);
+    border-top: 0;
+    border-left: 0;
+}
+
+.pagination__arrow--prev {
+    flex-direction: row-reverse;
+}
+
+.pagination__arrow--prev::after {
+    transform: translate(2px, 0%) rotate(135deg);
+}
+
+.pagination__arrow--next::after {
+    transform: translate(-2px, 0%) rotate(-45deg);
+}
+
+.pagination__list {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.pagination__item {
+    display: flex;
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+    font-weight: bold;
+}
+
+.pagination__item:hover {
+    color: var(--color-brand-hover);
+}
+
+.pagination__item[class*="current"] {
+    font-size: 1.5rem;
+    line-height: 2rem;
+    color: var(--color-brand);
+    border-bottom: 2px solid var(--color-brand);
+}
+
+.pagination__item[class*="current"]:hover {
+    color: var(--color-brand-hover);
+}

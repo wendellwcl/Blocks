@@ -1,0 +1,56 @@
+/* Variables */
+.accordion {
+    --color-brand: var(--color-theme_brand); /* Modify to your variable */
+    --color-brand-border: var(--color-theme_brand-border); /* Modify to your variable */
+    --color-bg: var(--color-theme_neutral-800); /* Modify to your variable */
+    --color-border: var(--color-theme_neutral-600); /* Modify to your variable */
+}
+
+.accordion {
+    width: 100%;
+    background-color: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: 0.25rem;
+}
+
+.accordion[class*="open"] > .accordion__header::after {
+    transform: translateY(2px) rotate(225deg);
+}
+
+.accordion[class*="open"] > .accordion__content {
+    display: block;
+}
+
+.accordion__header,
+.accordion__content {
+    padding: 1rem;
+}
+
+.accordion__header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    text-align: left;
+    border-radius: 0.25rem;
+}
+
+.accordion__header::after {
+    content: "";
+    width: 12px;
+    height: 12px;
+    margin-left: auto;
+    border: 3px solid var(--color-brand);
+    border-top: 0;
+    border-left: 0;
+    transform: translateY(-2px) rotate(45deg);
+    transition: all 300ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.accordion__header:focus {
+    outline: 1px solid var(--color-brand-border);
+    box-shadow: 0 0 5px var(--color-brand-border);
+}
+
+.accordion__content {
+    display: none;
+}

@@ -1,11 +1,8 @@
-@import "../../styles/mixins.scss";
-
-.skeleton-text {
+.skeletonText {
     @apply w-full flex flex-col gap-2 py-2 cursor-wait;
 
     &__line {
-        @apply w-full h-4 bg-theme_neutral-400;
-        @include animation-skeleton;
+        @apply w-full h-4 bg-theme_neutral-400 animate-[skeleton_3s_infinite];
 
         &:nth-child(1) {
             @apply w-5/6;
@@ -14,5 +11,17 @@
         &:nth-child(3) {
             @apply w-4/6;
         }
+    }
+}
+
+@keyframes skeleton {
+    0% {
+        @apply bg-theme_neutral-400;
+    }
+    50% {
+        @apply bg-theme_neutral-300;
+    }
+    100% {
+        @apply bg-theme_neutral-400;
     }
 }

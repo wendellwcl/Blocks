@@ -1,0 +1,61 @@
+/* Variables */
+.tabs {
+    --color-brand: var(--color-theme_brand); /* Modify to your variable */
+    --color-bg: var(--color-theme_neutral-800); /* Modify to your variable */
+    --color-bg-light: var(--color-theme_neutral-600); /* Modify to your variable */
+}
+
+.tabs {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--color-bg);
+    border-radius: 0.25rem;
+    overflow: hidden;
+}
+
+.tabs__header {
+    flex: none;
+    border-bottom: 1px solid var(--color-brand);
+}
+
+.tabs__list {
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+}
+
+.tabs__btn {
+    padding: 0.5rem 1rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    transition: all 150ms;
+}
+
+.tabs__btn:hover {
+    background-color: var(--color-bg-light);
+}
+
+.tabs__btn[class*="active"] {
+    background-color: var(--color-brand);
+}
+
+.tabs__content {
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+}
+
+.tabs__wrapper {
+    width: 100%;
+    height: 100%;
+    padding: 1rem;
+    display: none;
+    overflow-y: auto;
+}
+
+.tabs__wrapper[class*="show"] {
+    display: block;
+}

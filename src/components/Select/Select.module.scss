@@ -1,10 +1,8 @@
 .select {
-    &__wrapper {
-        @apply w-full relative;
+    @apply w-full relative;
 
-        &::after {
-            @apply content-[''] absolute top-1/2 right-4 -translate-y-[8px] w-[12px] h-[12px] border-[3px] border-t-0 border-l-0 border-theme_brand rotate-45 transition ease-out duration-300 pointer-events-none;
-        }
+    &::after {
+        @apply content-[''] absolute top-1/2 right-4 -translate-y-[8px] w-[12px] h-[12px] border-[3px] border-t-0 border-l-0 border-theme_brand rotate-45 pointer-events-none;
     }
 
     &__element {

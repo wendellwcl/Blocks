@@ -2,58 +2,55 @@
 
 import { useState } from "react";
 
-import styles from "./Pagination.module.scss";
+import styles from "./Pagination.module.css";
 
 export default function Pagination() {
-    /**
-     * @warning - !!!The variables and functions are for working example purposes only. This component must be adapted according to the paging logic!!!
-     */
-    const [counter, setCounter] = useState(2);
-    const maxCounter = 5;
+    const [counter, setCounter] = useState(1);
+    const maxCounter = 10;
 
+    // Go to the previous page.
     function handlePrev(): void {
         counter > 1 && setCounter((prev) => prev - 1);
-        return;
     }
 
+    // Go to the next page.
     function handleNext() {
         counter < maxCounter && setCounter((prev) => prev + 1);
-        return;
     }
 
     return (
         <div className={styles.pagination}>
-            <a
-                href="#"
+            <button
                 className={`${styles["pagination__arrow"]} ${styles["pagination__arrow--prev"]}`}
-                aria-label="Previous"
+                aria-label="Go to previous page"
                 onClick={handlePrev}
-            ></a>
+                disabled={counter === 1}
+            ></button>
             <ul className={styles.pagination__list}>
                 {counter - 1 > 0 && (
                     <li className={styles.pagination__item}>
-                        <a href="#" onClick={handlePrev}>
+                        <button onClick={handlePrev} aria-label={`Go to page ${counter - 1}`}>
                             {counter - 1}
-                        </a>
+                        </button>
                     </li>
                 )}
-                <li className={`${styles.pagination__item} current`}>
-                    <a href="#">{counter}</a>
+                <li className={`${styles.pagination__item} current`} aria-current="page">
+                    <span>{counter}</span>
                 </li>
                 {counter < maxCounter && (
                     <li className={styles.pagination__item}>
-                        <a href="#" onClick={handleNext}>
+                        <button onClick={handleNext} aria-label={`Go to page ${counter + 1}`}>
                             {counter + 1}
-                        </a>
+                        </button>
                     </li>
                 )}
             </ul>
-            <a
-                href="#"
+            <button
                 className={`${styles["pagination__arrow"]} ${styles["pagination__arrow--next"]}`}
-                aria-label="Next"
+                aria-label="Go to next page"
                 onClick={handleNext}
-            ></a>
+                disabled={counter === maxCounter}
+            ></button>
         </div>
     );
 }
