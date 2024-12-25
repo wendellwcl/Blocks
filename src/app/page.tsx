@@ -1,5 +1,10 @@
 "use client";
 
+import AsideBar from "@/components/AsideBar/AsideBar";
+import ComponentsSection from "@/components/ComponentsSection/ComponentsSection";
+import MainHeader from "@/components/MainHeader/MainHeader";
+import Providers from "./providers";
+
 // import Accordion from "@/components/Accordion/Accordion";
 // import Button from "@/components/Button/Button";
 // import CardH from "@/components/CardH/CardH";
@@ -31,19 +36,24 @@
 
 export default function Home() {
     return (
-        <>
-            {/* <Navbar
+        <Providers>
+            <div className="w-full h-full">
+                <MainHeader />
+                <main className="container grid grid-cols-1 md:grid-cols-4">
+                    <AsideBar />
+                    <ComponentsSection />
+                </main>
+                {/* <Navbar
                 brand={{
                     brandImgPath: "https://fakeimg.pl/400x400/7834e5/EEEEF0?text=Image&font=bebas",
                     brandUrl: "/",
-                }}
+                    }}
                 navLinks={[
                     { text: "item1", url: "/" },
                     { text: "item2", url: "/" },
                     { text: "item3", url: "/" },
-                ]}
-            /> */}
-            <div className="bg-theme_neutral text-theme_neutral-0 w-screen h-screen flex items-center justify-center p-8">
+                    ]}
+                    /> */}
                 {/* <Accordion
                     id="my-accordion"
                     title="Accordion"
@@ -194,6 +204,6 @@ export default function Home() {
                 </Tabs> */}
                 {/* <SpeedDial /> */}
             </div>
-        </>
+        </Providers>
     );
 }
