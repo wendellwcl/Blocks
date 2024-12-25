@@ -8,6 +8,10 @@ const config: Config = {
     ],
     theme: {
         extend: {
+            backgroundImage: {
+                "cover-img": "url('/assets/cover.jpg')",
+                "logo-svg": "url(/assets/logo.svg)",
+            },
             colors: {
                 theme_brand: {
                     DEFAULT: "#7834E5",

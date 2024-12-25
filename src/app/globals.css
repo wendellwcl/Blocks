@@ -19,3 +19,12 @@
     --color-theme_neutral-50: #b2b3bd;
     --color-theme_neutral-0: #eeeef0;
 }
+
+html,
+body {
+    @apply w-full min-w-80 h-screen bg-theme_neutral-800 text-theme_neutral-0 overflow-x-hidden;
+}
+
+.container {
+    @apply max-w-[1200px] mx-auto px-8;
+}
