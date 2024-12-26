@@ -1,13 +1,13 @@
 "use client";
 
-import { filterComponents } from "@/redux/slices/componentsListSlice";
+import { filterComponents } from "@/redux/slices/componentsListSlice/componentsListSlice";
 import { RootState } from "@/redux/store";
 import Link from "next/link";
 import { useDispatch, useSelector } from "react-redux";
 
 export default function AsideBar() {
-    const filteredComponents = useSelector((state: RootState) => state.componentsList.filteredComponents);
     const dispatch = useDispatch();
+    const { filteredComponents } = useSelector((state: RootState) => state.componentsList);
 
     return (
         <aside className="w-full self-start hidden md:block p-4 border border-theme_neutral-500 rounded">
@@ -18,7 +18,7 @@ export default function AsideBar() {
                         type="text"
                         placeholder="pesquisar..."
                         className="w-full bg-transparent border-b border-theme_neutral-500 focus:outline-none"
-                        onChange={(e) => dispatch(filterComponents({ query: e.target.value }))}
+                        onChange={(e) => dispatch(filterComponents(e.target.value))}
                     />
                 </div>
                 <ul className="pl-2 py-2 flex flex-col gap-1">
