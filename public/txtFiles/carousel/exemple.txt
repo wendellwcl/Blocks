@@ -1,0 +1,5 @@
+<Carousel>
+    <img src="https://fakeimg.pl/1200x800/7834e5/EEEEF0?text=Image1&font=bebas" alt="" />
+    <img src="https://fakeimg.pl/1200x800/7834e5/EEEEF0?text=Image2&font=bebas" alt="" />
+    <img src="https://fakeimg.pl/1200x800/7834e5/EEEEF0?text=Image3&font=bebas" alt="" />
+</Carousel>

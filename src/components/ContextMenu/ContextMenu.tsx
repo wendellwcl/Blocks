@@ -9,6 +9,7 @@ interface ContextMenuProps {
 }
 
 export default function ContextMenu({ children }: ContextMenuProps) {
+    const contextMenuRef = useRef<HTMLDivElement>(null);
     const triggerAreaRef = useRef<HTMLDivElement>(null);
     const floatingMenuRef = useRef<HTMLDivElement>(null);
     const [position, setPosition] = useState<{ xAxis: number; yAxis: number }>({ xAxis: 0, yAxis: 0 });
@@ -59,6 +60,12 @@ export default function ContextMenu({ children }: ContextMenuProps) {
     }
 
     useEffect(() => {
+        //Adding positioning style rule to parent element to ensure correct functioning
+        const container = contextMenuRef.current!.parentElement;
+        if (window.getComputedStyle(container!).position === "static") {
+            container!.style.position = "relative";
+        }
+
         // Add a global click listener to close the context menu
         window.addEventListener("click", closeContextMenu);
 
@@ -69,7 +76,7 @@ export default function ContextMenu({ children }: ContextMenuProps) {
     }, []);
 
     return (
-        <div className={styles.contextMenu}>
+        <div className={styles.contextMenu} ref={contextMenuRef}>
             <div
                 className={styles.contextMenu__triggerArea}
                 ref={triggerAreaRef}

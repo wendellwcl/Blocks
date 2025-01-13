@@ -1,0 +1,15 @@
+<Dialog id="my-dialog" title="Dialog" actionFunction={() => alert("Hello World")}>
+    <p>
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quibusdam deleniti facere veniam quas
+        eaque. A maxime quaerat sunt vel libero, corrupti qui velit, ab laboriosam suscipit, beatae
+        natus itaque perspiciatis?
+    </p>
+</Dialog>
+
+/* Trigger */
+<button
+    onClick={() => toggleDialog("my-dialog")}
+    className="bg-theme_brand px-4 py-2 rounded transition hover:bg-theme_brand-hover"
+>
+    CLique para exibir
+</button>

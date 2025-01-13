@@ -8,7 +8,6 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
     label: string;
     id: string;
     type: "text" | "email" | "number" | "passworld" | "search" | "tel" | "url";
-    placeholder: string;
 }
 
 export default function Input({ label, placeholder, type, id, ...props }: InputProps) {
@@ -33,7 +32,6 @@ export default function Input({ label, placeholder, type, id, ...props }: InputP
                 className={`${styles.input__input} ${isFilled ? "filled" : ""}`}
                 id={id}
                 type={type}
-                placeholder={placeholder}
                 onBlur={handleFilled}
                 ref={inputRef}
                 aria-required={props.required ? "true" : "false"}

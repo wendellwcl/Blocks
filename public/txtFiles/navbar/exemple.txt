@@ -1,0 +1,11 @@
+<Navbar
+    brand={{
+        brandImgPath: "./assets/logo.svg",
+        brandUrl: "#",
+    }}
+    navLinks={[
+        { text: "item1", url: "#" },
+        { text: "item2", url: "#" },
+        { text: "item3", url: "#" },
+    ]}
+/>

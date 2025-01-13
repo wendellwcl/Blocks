@@ -1,0 +1,62 @@
+/* Variables */
+.componentTabs {
+    --color-brand: var(--color-theme_brand); /* Modify to your variable */
+    --color-bg: var(--color-theme_neutral-800); /* Modify to your variable */
+    --color-bg-light: var(--color-theme_neutral-600); /* Modify to your variable */
+}
+
+.componentTabs {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border: 2px solid var(--color-bg-light);
+    border-top: 0;
+    border-radius: 0 0 0.25rem 0.25rem;
+}
+
+.componentTabs__header {
+    flex: none;
+    background-color: var(--color-bg-light);
+}
+
+.componentTabs__list {
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+}
+
+.componentTabs__btn {
+    padding: 0.5rem 1rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    transition: all 150ms;
+}
+
+.componentTabs__btn:hover {
+    background-color: var(--color-bg-light);
+}
+
+.componentTabs__btn[class*="active"] {
+    background-color: var(--color-brand);
+}
+
+.componentTabs__content {
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+}
+
+.componentTabs__wrapper {
+    width: 100%;
+    height: 100%;
+    padding: 1rem 2rem;
+    display: none;
+    overflow-y: auto;
+}
+
+.componentTabs__wrapper[class*="show"] {
+    display: block;
+}

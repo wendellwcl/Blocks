@@ -1,0 +1,1 @@
+<Slider id="my-slider" name="my-slider" min={0} max={100} value={60} />

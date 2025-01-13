@@ -1,5 +1,5 @@
 .navbar {
-    @apply sticky top-0;
+    @apply w-full sticky top-0;
 
     &__container {
         @apply px-4 py-2 h-16 flex items-center justify-between bg-theme_brand text-theme_neutral-0 relative z-50;

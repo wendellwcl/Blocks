@@ -1,5 +1,5 @@
 .carousel {
-    @apply w-full max-w-5xl aspect-video relative overflow-hidden;
+    @apply h-full aspect-video relative overflow-hidden;
 
     &__btn {
         @apply absolute top-1/2 -translate-y-1/2 w-20 h-20 z-50 cursor-pointer;

@@ -1,0 +1,1 @@
+<RadioInput id="my-radio" label="Radio" name="radio" />

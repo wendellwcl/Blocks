@@ -1,0 +1,6 @@
+<CardH
+    title="Card Title"
+    contentText="Lorem ipsum dolor sit amet, consectetur adipisicing elit."
+    imgSrc="https://fakeimg.pl/800x400/7834e5/EEEEF0?text=Image&font=bebas"
+    imgAlt="image alt text"
+/>

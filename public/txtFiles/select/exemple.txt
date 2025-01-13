@@ -1,0 +1,1 @@
+<Select id="my-select" name="my-select" options={["item 1", "item 2", "item 3"]} />

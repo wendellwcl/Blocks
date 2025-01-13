@@ -1,0 +1,13 @@
+<Toast
+    id="my-toast"
+    title="Toast Title"
+    message="Lorem ipsum dolor sit amet consectetur adipisicing elit."
+/>
+
+/* Trigger */
+<button
+    onClick={() => showToast("my-toast")}
+    className="px-4 py-2 bg-theme_brand rounded transition hover:bg-theme_brand-hover"
+>
+    Clique para exibir
+</button>

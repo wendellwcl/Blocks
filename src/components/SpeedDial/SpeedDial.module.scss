@@ -1,5 +1,5 @@
 .speedDial {
-    @apply absolute right-4 bottom-4 w-14 h-14;
+    @apply relative w-14 h-14;
 
     &[class*="show"],
     &[class*="toggle-show"] {

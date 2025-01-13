@@ -6,9 +6,7 @@
 }
 
 .speedDial {
-    position: absolute;
-    right: 1rem;
-    bottom: 1rem;
+    position: relative;
     width: 3.5rem;
     height: 3.5rem;
 }

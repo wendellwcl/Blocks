@@ -1,0 +1,20 @@
+<Tabs>
+    <div id="tabs-1" data-header-text="Content 1">
+        <h6 className="text-5xl mb-4">Content 1</h6>
+        <p>
+            ...
+        </p>
+    </div>
+    <div id="tabs-2" data-header-text="Content 2">
+        <h6 className="text-5xl mb-4">Content 2</h6>
+        <p>
+            ...
+        </p>
+    </div>
+    <div id="tabs-3" data-header-text="Content 3">
+        <h6 className="text-5xl mb-4">Content 3</h6>
+        <p>
+            ...
+        </p>
+    </div>
+</Tabs>

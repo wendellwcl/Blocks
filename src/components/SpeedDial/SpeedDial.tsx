@@ -50,7 +50,7 @@ export default function SpeedDial() {
                     <button tabIndex={isSpeedDialOpen ? 0 : -1}>💎</button>
                 </li>
                 <li className={styles.speedDial__item} role="menuitem">
-                    <button tabIndex={isSpeedDialOpen ? 0 : -1}>❤</button>
+                    <button tabIndex={isSpeedDialOpen ? 0 : -1}>💜</button>
                 </li>
             </ul>
         </div>

@@ -1,0 +1,1 @@
+<ToggleSwitch onChange={() => console.log("Hello world")} defaultChecked />

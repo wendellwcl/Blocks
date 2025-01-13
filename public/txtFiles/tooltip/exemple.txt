@@ -1,0 +1,3 @@
+<Tooltip id="my-tooltip" tip_text="Este é um tooltip">
+    <p className="px-4 py-2 bg-theme_brand rounded transition hover:bg-theme_brand-hover">Passe o mouse</p>
+</Tooltip>

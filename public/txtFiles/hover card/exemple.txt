@@ -1,0 +1,7 @@
+<HoverCard text="Passe o mouse">
+    <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur facere id veniam. Incidunt
+        nulla vitae maxime dolorem, repudiandae expedita iure deleniti dolores inventore excepturi.
+        Dignissimos a voluptatibus impedit libero consequatur!
+    </p>
+</HoverCard>

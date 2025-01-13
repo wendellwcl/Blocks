@@ -26,7 +26,7 @@ export default function AsideBar() {
                         filteredComponents.map((component, idx) => (
                             <li key={idx}>
                                 <Link
-                                    href={"/"}
+                                    href={`/component/${encodeURIComponent(component.name)}`}
                                     className="w-full relative flex items-center gap-2 pl-4 text-left font-[600] capitalize transition hover:text-theme_brand before:content-[attr(data-icon)] before:absolute before:left-0 before:rotate-45 before:text-[0.3rem]"
                                     data-icon="🟪"
                                 >

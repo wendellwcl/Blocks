@@ -1,0 +1,1 @@
+<Checkbox label="Checkbox" id="my-checkbox-1" name="checkbox-1" />
